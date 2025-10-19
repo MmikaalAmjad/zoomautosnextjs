@@ -1,0 +1,201 @@
+/* Container */
+.profile-container {
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  margin: 50px auto;
+  background: white;
+  margin-top: 100px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* Title */
+.profile-title {
+  font-size: 24px;
+  color: #002b5b;
+  margin-bottom: 20px;
+}
+
+/* Profile Card */
+.profile-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Profile Row */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.attribute {
+  font-weight: 600;
+  color: #333;
+}
+
+.value {
+  flex-grow: 1;
+  text-align: right;
+  color: #666;
+  word-break: break-word;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 16px;
+  color: #007bff;
+  transition: 0.3s;
+}
+
+.edit-btn:hover {
+  color: #0056b3;
+}
+
+/* Password Reset */
+.password-reset-card {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.password-reset-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #002b5b;
+}
+
+/* Input Fields */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.eye-icon {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* Reset Button */
+.reset-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.reset-btn:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+      width: 95%;
+      padding: 15px;
+  }
+  
+  .profile-title {
+      font-size: 20px;
+  }
+
+  .profile-row {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px;
+  }
+
+  .value {
+      text-align: left;
+  }
+
+  .edit-btn {
+      margin-top: 5px;
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+      width: 80%;
+      margin: 20px auto;
+      margin-top: 100px;
+      padding: 10px;
+      border-radius: 8px;
+  }
+
+  .profile-title {
+      font-size: 18px;
+  }
+
+  .profile-row {
+      padding: 5px;
+  }
+
+  .input-group input {
+      font-size: 12px;
+      padding: 8px;
+  }
+
+  .reset-btn {
+      font-size: 12px;
+      padding: 8px;
+  }
+}

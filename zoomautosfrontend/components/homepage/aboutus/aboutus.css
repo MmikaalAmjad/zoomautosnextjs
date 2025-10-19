@@ -1,0 +1,657 @@
+/* Container */
+.about-us-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Main Title */
+  .about-us-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .about-us-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #3498db;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Requirement-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+    margin-top: 40px;
+    margin-left: -80px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .Requirement-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #3498db;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Become Driver Section */
+.about-us {
+  padding: 30px; /* Added more padding for a spacious layout */
+  background-color: #f5f7fa; /* Softer background for a cleaner look */
+  border-radius: 12px; /* Slightly increased radius for a modern feel */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  font-family: 'Roboto', Arial, sans-serif; /* Use a modern font */
+  width: 100%;
+  margin: 40px auto; /* Increased margin for better spacing */
+  transition: transform 0.3s ease; /* Subtle animation for hover effect */
+}
+
+.about-us:hover {
+  transform: scale(1.02); /* Slight scale-up on hover for interactivity */
+}
+
+/* Content Flexbox */
+.about-us-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px; /* Increased gap for better spacing */
+}
+
+/* Image Styling */
+.about-us-image {
+  flex: 1;
+  max-width: 350px; /* Slightly larger for more prominence */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+}
+
+/* Text Content */
+.about-us-text {
+  flex: 2;
+}
+.requirements {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centers items on smaller screens */
+}
+.about-us-heading {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  color: #01103b; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+
+.about-us-paragraph {
+  font-size: 1.2em;
+  line-height: 1.8; /* Increased for better readability */
+  color: #4a4a4a; /* Neutral dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+.about-us-paragraph ul {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: disc; /* Clearer list style */
+}
+
+/* Button Styling */
+.about-us-button {
+  padding: 12px 25px; /* Slightly larger for better usability */
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e80f17; /* Use the primary red for visual focus */
+  border: none;
+  border-radius: 8px; /* Rounded for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.about-us-button:hover {
+  background-color: #bf0c14; /* Slightly darker red for hover effect */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us-content {
+    flex-direction: column; /* Stack elements on smaller screens */
+  }
+
+  .about-us-image {
+    max-width: 100%; /* Full width on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+.Requirement-title{
+  font-size: 2.5rem;
+
+  margin-left: 0px;
+}
+  .about-us-heading {
+    font-size: 1.8em; /* Adjusted for smaller screens */
+  }
+
+  .about-us-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .about-us-button {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+.our-mission-title {
+  font-size: 10rem;
+  font-weight: 700;
+  color: #e0e6f0;
+  text-align: left;
+  width: 400px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+
+
+.our-mission {
+  padding: 30px; /* Added more padding for a spacious layout */
+  background-color: #03285f; /* Softer background for a cleaner look */
+  border-radius: 12px; /* Slightly increased radius for a modern feel */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  font-family: 'Roboto', Arial, sans-serif; /* Use a modern font */
+  width: 100%;
+  margin: 40px auto; /* Increased margin for better spacing */
+  transition: transform 0.3s ease; /* Subtle animation for hover effect */
+}
+
+.our-mission:hover {
+  transform: scale(1.02); /* Slight scale-up on hover for interactivity */
+}
+
+/* Content Flexbox */
+.our-mission-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px; /* Increased gap for better spacing */
+}
+
+/* Image Styling */
+.our-mission-image {
+  flex: 1;
+  max-width: 350px; /* Slightly larger for more prominence */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+}
+
+/* Text Content */
+.our-mission-text {
+  flex: 2;
+}
+
+.our-mission-heading {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  color: #01103b; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+
+.our-mission-paragraph {
+  font-size: 1.2em;
+  line-height: 1.8; /* Increased for better readability */
+  color: #ffffff; /* Neutral dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+.our-mission-paragraph ul {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: disc; /* Clearer list style */
+}
+
+.ourmissionextra{
+  display:'flex';
+  flex-direction: row;
+}
+/* Button Styling */
+.our-mission-button {
+  padding: 12px 25px; /* Slightly larger for better usability */
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e80f17; /* Use the primary red for visual focus */
+  border: none;
+  border-radius: 8px; /* Rounded for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.our-mission-button:hover {
+  background-color: #bf0c14; /* Slightly darker red for hover effect */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
+}
+@media (max-width: 1200px) {
+  
+  .our-mission-title {
+    font-size: 4rem;
+    font-weight: 700;
+    width: 40%;
+  }  
+  .our-mission-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .our-mission-button {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .our-mission {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .ourmissionextra{
+    display:'flex';
+    flex-direction: column;
+  }
+  .our-mission-heading {
+    font-size: 1.4em; /* Adjusted for smaller screens */
+  }
+
+  .our-mission-title {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 80%;
+  }  
+  .our-mission-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .our-mission-button {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .our-mission {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .ourmissionextra{
+    display:'flex';
+    flex-direction: column;
+  }
+  .our-mission-heading {
+    font-size: 1.4em; /* Adjusted for smaller screens */
+  }
+
+  .our-mission-title {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 80%;
+  }  
+  .our-mission-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .our-mission-button {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+.ourPromisetitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #05142d;
+  text-align: center;
+  width: auto; /* Adjust based on design */
+  text-transform: uppercase;
+  position: relative;
+  
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Vertical Line Underline */
+.ourPromisetitle::after {
+  content: '';
+  position: absolute;
+  width: 4px; /* Changed width to height for vertical line */
+  height: 80px; /* Extended height for better visibility */
+  
+  bottom: -90px; /* Adjusted to align with text */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.ourPromise {
+  padding: 30px; /* Added more padding for a spacious layout */
+  background-color: #486dd4; /* Softer background for a cleaner look */
+  border-radius: 12px; /* Slightly increased radius for a modern feel */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  font-family: 'Roboto', Arial, sans-serif; /* Use a modern font */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 40px auto; /* Increased margin for better spacing */
+  transition: transform 0.3s ease; /* Subtle animation for hover effect */
+}
+
+.ourPromise:hover {
+  transform: scale(1.02); /* Slight scale-up on hover for interactivity */
+}
+
+/* Content Flexbox */
+.ourPromisecontent {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 50px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px; /* Increased gap for better spacing */
+}
+
+/* Image Styling */
+.ourPromiseimage {
+  flex: 1;
+  max-width: 400px; /* Default size for larger screens */
+  width: 100%; /* Ensures responsiveness */
+  border-radius: 10px;
+}
+
+.checkings{
+  display: flex;
+  flex-direction: row;
+}
+
+.promiseimageandheading{
+  flex-direction: column;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) { 
+  .ourPromiseimage {
+    max-width: 90%; /* Reduce width for smaller screens */
+    border-radius: 8px; /* Slightly smaller radius for mobile */
+  }
+}
+
+@media (max-width: 480px) { 
+  .ourPromiseimage {
+    max-width: 100%; /* Full width on very small screens */
+    border-radius: 5px; /* Even smaller radius for a compact look */
+  }
+  
+.checkings{
+  flex-direction: column;
+}
+}
+
+/* Text Content */
+.ourPromisetext {
+  flex: 2;
+}
+
+.ourPromiseheading {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  color: #ffffff; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+
+.ourPromiseparagraph {
+  font-size: 1.2em;
+  line-height: 1.8; /* Increased for better readability */
+  color: #ffffff; /* Neutral dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+.ourPromiseparagraph ul {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: disc; /* Clearer list style */
+}
+
+/* Button Styling */
+.ourPromisebutton {
+  padding: 12px 25px; /* Slightly larger for better usability */
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e80f17; /* Use the primary red for visual focus */
+  border: none;
+  border-radius: 8px; /* Rounded for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ourPromisebutton:hover {
+  background-color: #bf0c14; /* Slightly darker red for hover effect */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ourPromisecontent {
+    flex-direction: column; /* Stack elements on smaller screens */
+  }
+
+  .ourPromiseimage {
+    max-width: 200px; /* Full width on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .what-we-do {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .ourPromiseheading {
+    font-size: 1.8em; /* Adjusted for smaller screens */
+  }
+
+  .ourPromiseparagraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .ourPromisebutton {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+
+.what-we-do-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e0e6f0;
+  text-align: center;
+  width: auto; /* Adjust based on design */
+  letter-spacing: 2px; /* Slightly increased spacing for readability */
+  text-transform: uppercase;
+  position: relative;
+  margin-left: 10px;
+  
+  writing-mode: vertical-rl; /* Makes text vertical (right to left) */
+  text-orientation: upright; /* Ensures letters stay upright */
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Vertical Line Underline */
+.what-we-do-title::after {
+  content: '';
+  position: absolute;
+  width: 4px; /* Changed width to height for vertical line */
+  height: 80px; /* Extended height for better visibility */
+  
+  bottom: -90px; /* Adjusted to align with text */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.what-we-do {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Ensures content is centered */
+  overflow: hidden; /* Prevents any overflow */
+  background-color: #01103b; /* Softer background for a cleaner look */
+}
+
+.what-we-do:hover {
+  transform: scale(1.02); /* Slight scale-up on hover for interactivity */
+}
+
+/* Content Flexbox */
+.what-we-do-content {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 50px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px; /* Increased gap for better spacing */
+}
+
+/* Image Styling */
+.what-we-do-image {
+  flex: 1;
+  max-width: 350px; /* Slightly larger for more prominence */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+}
+
+/* Text Content */
+.what-we-do-text {
+  flex: 2;
+}
+
+.what-we-do-heading {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  color: #ffffff; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+.Role {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  background-color: #fff;
+  color: #01103b; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+.what-we-do-paragraph {
+  font-size: 1.2em;
+  line-height: 1.8; /* Increased for better readability */
+  color: #ffffff; /* Neutral dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+.what-we-do-paragraph ul {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: disc; /* Clearer list style */
+}
+
+/* Button Styling */
+.what-we-do-button {
+  padding: 12px 25px; /* Slightly larger for better usability */
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e80f17; /* Use the primary red for visual focus */
+  border: none;
+  border-radius: 8px; /* Rounded for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.what-we-do-button:hover {
+  background-color: #bf0c14; /* Slightly darker red for hover effect */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .what-we-do-content {
+    flex-direction: column; /* Stack elements on smaller screens */
+    
+  }
+
+  .what-we-do-image {
+    max-width: 100%; /* Full width on small screens */
+  }
+}
+.flex-containerRole {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .flex-containerRole {
+    flex-direction: column;
+  }
+  .what-we-do-title{
+    writing-mode: horizontal-tb; /* Makes text vertical (right to left) */
+  text-orientation: upright; /* Ensures letters stay upright */
+  white-space: nowrap; /* Prevents text wrapping */
+  }
+}
+@media (max-width: 480px) {
+  .what-we-do {
+    padding: 20px; /* Reduced padding for mobile */
+    width: 100%;
+  }
+
+  .what-we-do-heading {
+    font-size: 1.8em; /* Adjusted for smaller screens */
+  }
+
+  .what-we-do-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .ourPromisebutton {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}

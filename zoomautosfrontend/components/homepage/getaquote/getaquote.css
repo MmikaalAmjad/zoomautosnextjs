@@ -1,0 +1,179 @@
+/* Get Quote Section */
+.get-quote {
+  padding: 30px;
+  background-color: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 40px auto;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+.get-quote:hover,
+.get-quote:active {
+  transform: scale(1.02);
+}
+
+/* Content Flexbox */
+.get-quote-content {
+  display: flex;
+  align-items: flex-start; /* Prevents stretching */
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+@supports not (gap: 30px) {
+  .get-quote-content > * {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Image Styling */
+.get-quote-image {
+  flex: 0 1 350px; /* Prevents excessive growth */
+  max-width: 350px;
+  max-height: 300px; /* Limits height */
+  object-fit: cover; /* Prevents distortion */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  min-height: auto; /* Fixes Safari stretching */
+}
+
+/* Text Content */
+.get-quote-text {
+  flex: 2;
+  min-width: 0;
+}
+
+.get-quote-heading {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #01103b;
+  font-weight: bold;
+}
+
+.get-quote-paragraph {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.get-quote-button {
+  padding: 12px 25px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #e80f17;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  touch-action: manipulation;
+}
+
+.get-quote-button:hover,
+.get-quote-button:active {
+  background-color: #bf0c14;
+  transform: translateY(-3px);
+}
+
+/* Remove Button */
+.remove-button {
+  background-color: #01103b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.remove-button:hover {
+  background-color: #e80f17;
+}
+
+.remove-button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+/* Responsive Box */
+.responsive-div {
+  background-color: #D32F2F;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.responsive-div:hover {
+  background-color: #1976D2;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .get-quote-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .get-quote-image {
+    max-width: 100%;
+    max-height: 250px; /* Adjust height for smaller screens */
+  }
+
+  .responsive-div {
+    padding: 15px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .get-quote {
+    padding: 20px;
+  }
+
+  .get-quote-heading {
+    font-size: 1.8em;
+  }
+
+  .get-quote-paragraph {
+    font-size: 1em;
+  }
+
+  .get-quote-button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+
+  .responsive-div {
+    padding: 10px;
+    font-size: 0.9em;
+    border-radius: 5px;
+  }
+
+  .get-quote-image {
+    max-height: 200px; /* Further reduce height for small screens */
+  }
+}
+
+/* Fix viewport height bug in Safari */
+html,
+body {
+  height: -webkit-fill-available;
+}

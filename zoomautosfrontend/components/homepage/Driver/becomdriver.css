@@ -1,0 +1,137 @@
+/* Become Driver Section */
+.become-driver {
+  padding: 30px; /* Added more padding for a spacious layout */
+  background-color: #f5f7fa; /* Softer background for a cleaner look */
+  border-radius: 12px; /* Slightly increased radius for a modern feel */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  font-family: 'Roboto', Arial, sans-serif; /* Use a modern font */
+  max-width: 1200px;
+  margin: 40px auto; /* Increased margin for better spacing */
+  transition: transform 0.3s ease; /* Subtle animation for hover effect */
+  will-change: transform; /* Improve performance in Safari */
+  -webkit-font-smoothing: antialiased; /* Better font rendering */
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* Fix viewport resizing issue */
+}
+
+.become-driver:hover,
+.become-driver:active { /* Fix for iOS Safari hover delay */
+  transform: scale(1.02); /* Slight scale-up on hover for interactivity */
+}
+
+/* Content Flexbox */
+.become-driver-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start; 
+  
+  gap: 30px; /* Increased gap for better spacing */
+}
+
+@supports not (gap: 30px) { /* Safari fallback for gap */
+  .become-driver-content > * {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.become-driver-image {
+  flex: 0 1 auto; /* Prevents unwanted stretching */
+  max-width: 350px; /* Ensures image does not grow beyond 350px */
+  max-height: 300px; /* Prevents excessive vertical stretching */
+  width: 100%; /* Ensures responsiveness */
+  height: auto; /* Maintains natural aspect ratio */
+  object-fit: cover; /* Ensures image fills box without distortion */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Text Content */
+.become-driver-text {
+  flex: 2;
+  min-width: 0; /* Fix flex-shrink issue in Safari */
+}
+
+.become-driver-heading {
+  font-size: 2.2em; /* Slightly larger for emphasis */
+  margin-bottom: 15px;
+  color: #01103b; /* Use theme primary color for consistency */
+  font-weight: bold;
+}
+
+.become-driver-paragraph {
+  font-size: 1.2em;
+  line-height: 1.8; /* Increased for better readability */
+  color: #4a4a4a; /* Neutral dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+.become-driver-paragraph ul {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: disc; /* Clearer list style */
+}
+
+/* Button Styling */
+.become-driver-button {
+  padding: 12px 25px; /* Slightly larger for better usability */
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e80f17; /* Use the primary red for visual focus */
+  border: none;
+  border-radius: 8px; /* Rounded for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  touch-action: manipulation; /* Fix for click delay in Safari */
+  -webkit-tap-highlight-color: transparent; /* Removes touch delay on Safari */
+}
+
+.become-driver-button:hover,
+.become-driver-button:active { /* Fix for iOS Safari hover delay */
+  background-color: #bf0c14; /* Slightly darker red for hover effect */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .become-driver-content {
+    display: flex;
+    flex-direction: column; /* Stack elements on smaller screens */
+    align-items: center; /* Centers items for better layout */
+    text-align: center; /* Ensures proper text alignment */
+  }
+
+  .become-driver-image {
+    max-width: 100%; /* Full width on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .become-driver {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .become-driver-heading {
+    font-size: 1.8em; /* Adjusted for smaller screens */
+  }
+
+  .become-driver-paragraph {
+    font-size: 1em; /* Optimized size for mobile readability */
+  }
+
+  .become-driver-button {
+    font-size: 1em; /* Adjusted size for smaller screens */
+    padding: 10px 20px;
+  }
+}
+
+/* Fix viewport height bug in iOS Safari */
+html,
+body {
+  height: 100%;
+  min-height: -webkit-fill-available; /* Fixes iOS Safari height bug */
+}

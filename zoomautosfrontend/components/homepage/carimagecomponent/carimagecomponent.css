@@ -1,0 +1,119 @@
+.car-image-container {
+    position: absolute;
+    
+    width: 100%;
+    height: 800px; /* Adjust as per your preference */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+  
+  .heading {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    background-color: #FF4C4C; /* Red button */
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #FF1F1F;
+  }
+  
+  .contentcarimage{
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: transparent;
+    text-align: center;
+    color: #fff;
+  }
+ 
+  @media (max-width: 1024px) {
+    
+    .contentcarimage{
+      
+    z-index: -1; /* Ensures the blur stays behind the text */
+    
+    height: 750px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    
+  .contentcarimage{
+    background: rgba(28, 3, 98, 0.2); /* Semi-transparent overlay */
+    backdrop-filter: blur(3px); /* Applies the blur effect to the background */
+    height: 650px;
+    width: 100%;
+  }
+    .heading {
+      font-size: 28px;
+    }
+  
+    .description {
+      font-size: 16px;
+    }
+  
+    .cta-button {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .car-image-container {
+      margin-top: auto;
+       height: auto;
+        object-fit: cover;
+        margin-bottom: -20px;
+    }
+  
+   
+    .contentcarimage{
+    margin-top: 70px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      background: rgba(28, 3, 98, 0.2); /* Semi-transparent overlay */
+      backdrop-filter: blur(3px); /* Applies the blur effect to the background */
+      z-index: -1; /* Ensures the blur stays behind the text */
+      height: 650px;
+      text-align: center;
+      color: #fff;
+    }
+    .heading {
+      font-size: 24px;
+    }
+  
+    .description {
+      font-size: 14px;
+    }
+  
+    .cta-button {
+      font-size: 12px;
+    }
+  }
+  

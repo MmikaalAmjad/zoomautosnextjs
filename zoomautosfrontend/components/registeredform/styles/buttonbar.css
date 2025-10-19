@@ -1,0 +1,27 @@
+.buttonb-bar {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, minmax(50px, 1fr)); /* Automatically adjust columns based on screen size */
+    gap: 20px;
+    align-self: center;
+    background-color: #f8f9fa;
+    
+  }
+  
+  .buttonb {
+    background-color: #c41e34;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buttonb:hover {
+    background-color: #01103b;
+  }
+  
+  .buttonb.active {
+    background-color: #01103b; /* Active button color */
+  }
+  

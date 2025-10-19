@@ -1,0 +1,480 @@
+.logisticshomepage-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap */
+  margin-left: 250px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.columnwiseportal {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 2fr));
+  width: fit-content;            /* Shrink to fit content */
+  margin: 0 auto;                /* Center horizontally */
+}
+
+@media (max-width: 1280px) {
+  .logisticshomepage-wrapper {
+    margin-left: auto;
+    padding: 10px;
+    flex-direction: column;
+  }
+  .columnwiseportal {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(200px, 2fr));
+  width: fit-content;            /* Shrink to fit content */
+  margin: 0 auto;                /* Center horizontally */
+}
+}
+@media (max-width: 480px) {
+  .logisticshomepage-wrapper {
+    margin-left: auto; /* Adjust for sidebar on smaller screens */
+    padding: 10px;
+  }
+   .columnwiseportal {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(200px, 2fr));
+  width: fit-content;            /* Shrink to fit content */
+  margin: 0 auto;                /* Center horizontally */
+}
+}
+
+.logisticsheadings {
+  color: #3b0101;
+  font-size: 2vw; /* Responsive font size */
+  text-align: center;
+}
+
+.headerlogistic {
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 5vh;
+  
+}.headerlogistic h1 {
+  font-size: clamp(1rem, 1.8vw, 2.5rem); /* Dynamic text sizing */
+}
+
+.date {
+  font-size: clamp(1rem, 1.8vw, 2.5rem);
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Background Image Handling */
+.background-image {
+  position: fixed; /* Ensures it stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: blur(2px); /* Slightly optimized blur */
+}
+.background-image2 {
+  position: fixed; /* Ensures it stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  
+}
+.specparapgraphcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centers items on smaller screens */
+}
+.requirementcontainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centers items on smaller screens */
+}
+
+.specialparagraph {
+  background-color: #01103b;
+  color: white;
+  font-weight: 600;
+  width: auto; /* Allows it to shrink on smaller screens */
+  max-width: 90%; /* Prevents it from becoming too wide */
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center; /* Keeps text centered */
+}
+.specialparagraph3 {
+  background-color: white;
+  color: #01103b;
+  font-weight: 600;
+  width: auto; /* Allows it to shrink on smaller screens */
+  max-width: 90%; /* Prevents it from becoming too wide */
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: large;
+  border-radius: 20px;
+  text-align: center; /* Keeps text centered */
+}
+.specialparagraphtwo {
+  background-color: #0e8cb3;
+  color: rgb(2, 40, 55);
+  font-weight: 600;
+  width: auto; /* Allows it to shrink on smaller screens */
+  max-width: 90%; /* Prevents it from becoming too wide */
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center; /* Keeps text centered */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .specparapgraphcontainer {
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers items */
+  }
+
+  .columnwiseportal{
+  display: grid;
+  grid-template-columns: repeat(1,minmax(200px, 2fr));
+}
+
+  .specialparagraph {
+    
+    max-width: 90%; /* Prevents it from being too wide */
+  }
+}
+
+@media (max-width: 480px) {
+  .specialparagraph {
+    padding: 15px; /* Reduces padding on very small screens */
+    font-size: 12px; /* Adjusts font size for better readability */
+    max-width: 90%; /* Prevents it from being too wide */
+  }
+  .requirementcontainer{
+    
+    padding-right: 10px;
+    justify-content: center; /* Centers items on smaller screens */
+  }
+
+  
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-content {
+  background: white;
+  width: 50%;
+  max-height: 80vh; /* Limit height */
+  overflow-y: auto; /* Enables scrolling */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.close-button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-button:hover {
+  background: #cc0000;
+}
+@media (max-width: 768px) {
+  .background-image {
+    object-fit: cover;
+    background-position: center;
+  }
+  .modal-content{
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-image {
+    object-fit: cover;
+    background-position: center;
+  }
+}
+
+/* Filter Section Responsive */
+.filter-section {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.filter-section div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Overlay Text */
+.overlay-textLogistics {
+  position: relative;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  z-index: 10;
+  white-space: nowrap;
+  margin-top: 10vh;
+  background: rgba(0, 0, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 90%;
+}
+
+@media (max-width: 768px) {
+  .overlay-textLogistics {
+    font-size: 1.5rem;
+    margin-top: 5vh;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-textLogistics {
+    font-size: 1.2rem;
+    margin-top: 2vh;
+    padding: 0.5rem;
+    width: 80%;
+  }
+}
+
+/* Logistics Homepage Container */
+.logisticshomepage-container {
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.logisticshomepage-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logisticshomepage-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-subcontract {
+  background-color: #007bff;
+  color: white;
+}
+
+.button-subcontract:hover {
+  background-color: #0056b3;
+}
+
+.button-active-jobs {
+  background-color: #28a745;
+  color: white;
+}
+
+.button-active-jobs:hover {
+  background-color: #1e7e34;
+}
+
+.button-pending-jobs {
+  background-color: #ffc107;
+  color: black;
+}
+
+.button-pending-jobs:hover {
+  background-color: #e0a800;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.dashboard h1 {
+  color: #01103b;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* Cards Grid */
+.cardsdash-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr)); /* Adjust dynamically */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+.cardsdash2-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 2fr)); /* Adjust dynamically */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+.carddash {
+  
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  color: #01103b;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  justify-content: center;
+}
+
+.carddashcomp {
+
+  height: max-content;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 15vh;
+  text-align: center;
+  background: linear-gradient(135deg, #01103b, #e80f17);
+  color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.carddash:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+.carddashcomp h1{
+  color: white;
+  text-shadow: white;
+  text-align: left;
+  font-size: 2.5rem;
+  font-style: italic;
+}
+
+.carddash h2 {
+  
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.carddash p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 15px 0 0;
+}
+.call-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+
+
+@media (max-width: 1024px) {
+  .cardsdash-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  
+.cardsdash2-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr)); /* Adjust dynamically */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+  .carddashcomp {
+    max-width: 300px;
+    padding: 20px;
+  }
+
+  .carddashcomp h1{
+  font-size: 1.5rem;
+  font-style: italic;
+}
+}
+
+@media (max-width: 480px) {
+  .carddash {
+    max-width: 180px;
+    height: 160px;
+    
+    padding: 15px;
+  }
+  .carddashcomp h1{
+  font-size: 1.5rem;
+  }
+
+  .carddashcomp {
+    max-width: 250px;
+    padding: 15px;
+    margin-top: 2vh;
+  }
+  .columnwiseportal{
+  display: grid;
+  grid-template-columns: repeat(1,minmax(200px, 2fr));
+}
+}
+

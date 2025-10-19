@@ -1,0 +1,169 @@
+/* Styles for table headers */
+th {
+  background-color: #e9ecf5; /* A softer blue-gray tone for better harmony */
+  padding: 12px; /* Slightly increased padding for a more spacious layout */
+  text-align: center;
+  border-bottom: 4px solid #01103b; /* Matches the primary blue shade */
+  font-weight: bold; /* Highlights the headers */
+  color: #01103b; /* Dark blue text to match the theme */
+  font-size: 1rem; /* Ensure scalable font size */
+  width: 200px; /* Limit cell width for consistent layout */
+  
+}
+
+.table-container {
+  width: 100%; /* Full width of parent */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
+}
+
+
+table {
+  border-collapse: collapse;
+  min-width: 600px; /* Prevents table from shrinking too much */
+  width: 100%; /* Stretches inside container */
+  border: 2px solid #01103b;
+  margin: 0 auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  text-align: center; /* Centers text */
+  margin-bottom: 50px;
+}
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: 20px;
+}
+/* Styles for table cells */
+td {
+  padding: 12px; /* Consistent with the headers */
+  border-bottom: 1px solid #ccc; /* A lighter gray for subtle separation */
+  color: #333; /* Neutral text color for good readability */
+  font-size: 0.9rem; /* Slightly smaller font size for cells */
+  word-wrap: break-word; /* Prevent text overflow */
+  text-align: center;
+  width: 200px; /* Limit cell width for consistent layout */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  overflow: hidden; /* Hide overflow text */
+}
+td ul, td ol {
+  list-style: none; /* Remove bullets/numbers from lists in <td> */
+  padding-left: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+td li {
+  margin-bottom: 4px; /* Add spacing between list items, if needed */
+  list-style: none;
+}
+/* Styles for table rows */
+tr {
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  width: 100%;
+}
+
+tr:hover {
+  background-color: #f1f5ff; /* A very light blue for hover effect */
+}
+.collectiondrop{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 250px;
+}
+
+/* Styles for buttons with circular shape */
+.editdeletebutton {
+  display: flex; /* Use flexbox for proper alignment */
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  margin: 0 5px;
+  width: 30px; /* Set a fixed width for the button */
+  height: 30px; /* Set the height equal to the width */
+  border-radius: 50%; /* Makes the button circular */
+  border: none;
+  background-color: transparent; /* Red to match the primary theme */
+  color: #01103b; /* White text or icon color for contrast */
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+  font-size: 1.2rem; /* Adjust size for the icon */
+}
+
+/* Hover effect */
+.editdeletebutton:hover {
+  background-color: #e80f17; /* Darker red for hover effect */
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  table {
+    width: 80%; /* Ensure full width */
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+    display: table; /* Maintain table structure */
+  }
+
+  th, td {
+    font-size: 0.9rem; /* Adjust font size */
+    padding: 10px; /* Adjust padding */
+    width: auto; /* Allow cells to expand naturally */
+  }
+  .editdeletebutton {
+    font-size: 0.8rem; /* Slightly smaller text for buttons */
+    padding: 5px 10px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 768px) {
+  th, td {
+    font-size: 0.8rem; /* Reduce font size for smaller screens */
+    padding: 8px; /* Decrease padding for compact layout */
+  }
+  .collectiondrop{
+    flex-direction: column;
+    margin-left: 0;
+
+  }
+  .grid-container {
+    grid-template-columns: repeat(1, minmax(250px, 1fr)); /* Responsive grid */
+  }
+
+
+  .editdeletebutton {
+    padding: 4px 8px; /* Adjust padding for smaller buttons */
+    font-size: 0.8rem; /* Smaller text for buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  
+  th, td {
+    font-size: 0.7rem; /* Further reduce font size for very small screens */
+    padding: 6px; /* Compact padding */
+  }
+
+
+  .editdeletebutton {
+    padding: 3px 6px; /* Compact buttons for small screens */
+    font-size: 0.7rem; /* Smaller button text */
+  }
+}
+
+/* Alternate row coloring for better readability */
+tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Light gray for odd rows */
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff; /* Default white for even rows */
+}

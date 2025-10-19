@@ -1,0 +1,140 @@
+/* Container for the slider */
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Change text color as needed */
+    font-size: 2rem; /* Adjust font size */
+    text-align: center;
+    z-index: 10; /* Ensure the text is above other elements */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+.overlay-text h1{
+  color: white;
+  font-weight: 700;
+}
+.overlay-text h2{
+    font-weight: 700;
+}
+
+.sliderss-container {
+    max-width: 100%;
+    object-fit: cover;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Styling each image slide */
+.images-slide {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Each image styling */
+.slides-image {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+/* Overlay on the image (grayish, blur effect) */
+.images-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Grayish color with opacity */
+    backdrop-filter: blur(4px); /* Blur effect */
+    z-index: 1; /* Ensure it's layered over the image */
+}
+.simages-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.); /* Grayish color with opacity */
+     /* Blur effect */
+    z-index: 1; /* Ensure it's layered over the image */
+}
+/* Overlay text on each slide */
+.overlayss-texts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(26, 27, 28, 0.5); /* 50% opacity */
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
+    text-align: center;
+    white-space: nowrap;
+    width: max-content;
+    flex-direction: column;
+    z-index: 2; /* Ensure text appears above overlay */
+}
+
+
+  
+
+
+
+
+
+/* Bounce Animation Keyframes */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* Reset position */
+    }
+    40% {
+        transform: translateY(-5px); /* Bounce up */
+    }
+    60% {
+        transform: translateY(-3px); /* Bounce down */
+    }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .slide-video {
+        height: auto;
+        margin-top: auto;
+        object-fit: cover;
+    }
+    .sliderss-container, .images-slide, .slides-image{
+        margin-top: auto;
+       width: 100%;
+        
+    }
+
+    .overlays-texts, .overlay-text {
+        font-size: 24px;
+        width: 80%; /* Allow more space for text */
+        
+        height: auto;
+        white-space: normal;
+        
+    }
+
+    /* Adjust arrow button size */
+    .custom-arrow {
+        font-size: 18px;
+        margin: 0 20px;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .card .text {
+        font-size: 2rem; /* Adjust text size for mobile */
+    }
+}

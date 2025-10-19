@@ -1,0 +1,83 @@
+/* Stats container as a grid */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Automatically adjust columns dynamically */
+  gap: 20px;
+  padding: 40px 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Stat item styling */
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background-color: #01103b; /* Use your primary blue for consistency */
+  border-radius: 10px; /* Slightly more rounded corners for a modern look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Enhanced shadow for a subtle pop-out effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animations */
+}
+
+.stat-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+
+/* Stat number styling */
+.stat-number {
+  font-size: 2.8em; /* Slightly larger for emphasis */
+  font-weight: bold;
+  color: #e80f17; /* Keeps focus on the primary red */
+}
+
+/* Stat text styling */
+.stat-text {
+  font-size: 1.2em; /* Slightly larger for better readability */
+  color: #d6d6d6; /* Softer gray to contrast the blue background */
+  margin-top: 10px;
+}
+
+/* Ensure there's space between paragraphs inside stat items */
+.stat-item p {
+  margin-top: 10px;
+  line-height: 1.5; /* Better text readability */
+}
+
+/* For smaller screens (Tablets and below) */
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic adjustment */
+    margin: 0 auto; /* Center the grid */
+  }
+
+  .stat-item {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .stat-number {
+    font-size: 2.3em; /* Slightly smaller for compact view */
+  }
+
+  .stat-text {
+    font-size: 1em; /* Reduced text size for readability */
+  }
+}
+
+/* For very small screens (Mobile) */
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr; /* Single column on mobile devices */
+  }
+
+  .stat-item {
+    padding: 15px; /* Reduced padding */
+  }
+
+  .stat-number {
+    font-size: 2em; /* Optimized size for small screens */
+  }
+
+  .stat-text {
+    font-size: 0.9em; /* Optimized size for small screens */
+  }
+}

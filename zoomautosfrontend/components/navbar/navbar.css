@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+.quote-count {
+  background-color: #ff4d4d; /* Red badge */
+  color: white;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 5%; /* Reduced padding for better squeezing */
+  background-color: #01103b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+.menu-toggle .cross {
+  font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+}
+
+
+.logo img {
+  width: 185px; /* Ensure the logo is responsive */
+  height: 80px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping of links */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #e80f17;
+  margin-left: 15px; /* Adjusted margin for tighter spacing */
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+.navbar a.active {
+  font-weight: 700;
+  color: #fff;
+}
+
+.sidenav-logo {
+  width: 100%;
+  text-align: center;
+  background-color: transparent
+}
+
+.sidenav-logo img {
+  width: 80%; /* Adjust the size of the logo */
+  
+}
+
+/* Other styles remain unchanged */
+
+/* Style the hamburger menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1111121;
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Show the hamburger button on small screens */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    color: #fff;
+  }
+  .logo img {
+    width: 100px; /* Ensure the logo is responsive */
+    height: 50px;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #01103b;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .navbar.active {
+    display: flex; /* Show the navbar when active */
+  }
+
+  .navbar a {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Top Navbar */
+/* Top Navbar */
+.top-navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #01103b;
+  display: flex;
+  
+  align-items: center;
+  justify-content: space-between; /* Push items to both ends */
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+
+/* Navbar Actions: Login Button + Hamburger */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end; /* Push all buttons to the right */
+  gap: 10px; /* Spacing between buttons */
+}
+
+
+/* Login Button */
+.login-btn {
+  background-color: #242345;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  border: #fff solid 1px;
+}
+
+/* Hamburger Toggle Button */
+.sidenav-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: none; /* Hidden on large screens */
+}
+
+/* Show Hamburger Toggle on Small Screens */
+@media screen and (max-width: 1280px) {
+  .sidenav-toggle {
+    display: block;
+  }
+  .sidenav {
+    transform: translateX(-250px); /* Hidden by default */
+  }
+  
+  .close-btn {
+    display: block;
+  }
+  .sidenav.active {
+    transform: translateX(0); /* Show when active */
+  }
+}
+@media screen and (min-width: 1281px) {
+  
+  .close-btn {
+    display: none;
+  }
+  
+}
+
+/* Sidebar */
+.sidenav {
+  width: 250px;
+  height: 100%;
+  background-color: #01103b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  
+  z-index: 2001;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for toggle */
+  overflow-y: auto; /* Makes the sidebar scrollable when content overflows */
+  padding-bottom: 20px; /* Add some padding to the bottom */
+}
+
+/* Custom Scrollbar */
+.sidenav::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+  background-color: #444352; /* Color of the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.sidenav::-webkit-scrollbar-track {
+  background-color: #01103b; /* Color of the track */
+}
+
+/* Sidebar for large screens */
+
+/* Sidebar for small screens */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    transform: translateX(-250px); /* Hidden by default */
+  }
+  .sidenav.active {
+    transform: translateX(0); /* Show when active */
+  }
+}
+
+/* Sidebar links */
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav ul li {
+  padding: 8px 16px;
+}
+
+
+/* Sidebar links */
+.sidenav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sidenav ul li a:hover {
+  background-color: #242345; /* Highlight color for active link */
+  color: white; /* Ensure text color is readable */
+  font-weight: bold; /* Optional for emphasis */
+  border-radius: 5px; /* Add rounded corners to active links */
+}
+
+/* Active link styling */
+.sidenav ul li a.active-link {
+  background-color: #242345; /* Highlight color for active link */
+  color: white; /* Ensure text color is readable */
+  font-weight: bold; /* Optional for emphasis */
+  border-radius: 5px; /* Add rounded corners to active links */
+}
+
+/* Close button (for small screens only) */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Toggle button for small screens */
+.sidenav-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.email-form {
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .email-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .email-form button {
+    background: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .email-form p {
+    margin-top: 10px;
+    color: green;
+  }
+  
