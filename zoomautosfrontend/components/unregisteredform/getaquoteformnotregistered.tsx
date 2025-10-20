@@ -23,8 +23,8 @@ const GetAQuoteForm = () => {
     setFormContent(e.target.value);
   };
 
-  const onLoginClick = () => router.push("/Logistics/Login");
-  const onSignupClick = () => router.push("/Logistics/Signup");
+  const onLoginClick = () => router.push("/login");
+  const onSignupClick = () => router.push("/signup");
 
   return (
     <div className="move-container">

@@ -15,7 +15,7 @@ const Footer = () => {
     const fetchLocationData = async () => {
       try {
         const res = await axios.get(
-          "https://zoomautos.co.uk/api/LogisticsLocation",
+          "/api/logisticslocation",
           { params: { _t: new Date().getTime() } }
         );
         setLocationUrl(res.data.locationUrl || "");
@@ -32,7 +32,7 @@ const Footer = () => {
     const fetchContact = async () => {
       try {
         const res = await axios.get(
-          "https://zoomautos.co.uk/api/LogisticsContact",
+          "/api/contact",
           { params: { _t: new Date().getTime() } }
         );
         setContactNo(res.data.contactNo || "");
@@ -48,7 +48,7 @@ const Footer = () => {
     const fetchEmail = async () => {
       try {
         const res = await axios.get(
-          "https://zoomautos.co.uk/api/LogisticsEmail",
+          "/api/logisticsemail",
           { params: { _t: new Date().getTime() } }
         );
         setEmail(res.data.email || "");
@@ -111,7 +111,7 @@ const Footer = () => {
 
         {/* Social / Email */}
         <div className="footer-section">
-          <h4>Follow Us</h4>
+          <h4>Call Us</h4>
           <div className="social-icons">
             <a href={`tel:${contactNo}`} aria-label="Call Us">
               <IoCall />

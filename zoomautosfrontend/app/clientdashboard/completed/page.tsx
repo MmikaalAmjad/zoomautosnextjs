@@ -51,14 +51,14 @@ useEffect(() => {
       const token = sessionStorage.getItem("authTokenDealer");
       
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
           params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
 
-        const filteredData = response.data.filter((item:any) => (item.status === "Completed" ||item.status==="Aborted") && item.customername===dealerDetails.name && item.customercompanyName===dealerDetails.companyName);
+        const filteredData = response.data.filter((item:any) => (item.status.toLowerCase() === "completed" ||item.status.toLowerCase()==="aborted") && item.customername===dealerDetails.name && item.customercompanyName===dealerDetails.companyName);
 
         setRecords(filteredData);
         setLoading(false);

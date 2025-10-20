@@ -20,7 +20,7 @@ const LogisticsTiming = () => {
 
   const fetchTimings = async () => {
     const response = await fetch(
-  `https://zoomautos.co.uk/api/LogTime?_t=${new Date().getTime()}`
+  `/api/timing?_t=${new Date().getTime()}`
 );
 
     const data = await response.json();
@@ -49,7 +49,7 @@ const LogisticsTiming = () => {
     const startTime24 = formData.startTime.split(' ')[0];
     const endTime24 = formData.endTime.split(' ')[0];
 
-    await fetch('https://zoomautos.co.uk/api/LogTime', {
+    await fetch('/api/timing', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

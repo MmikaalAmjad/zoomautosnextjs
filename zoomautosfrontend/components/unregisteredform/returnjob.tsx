@@ -255,11 +255,13 @@ servicetype: 'RETURN JOB',
         throw new Error(`Please enter a registration number.`);
       }
   
-      const response = await fetch('https://zoomautos.co.uk/vehicle-enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ registrationNumber }),
-      });
+      const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
   
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -312,11 +314,13 @@ const handleEnquiry = async (index:any, registrationNumber:any) => {
       throw new Error(`Please enter a registration number.`);
     }
 
-    const response = await fetch('https://zoomautos.co.uk/vehicle-enquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ registrationNumber }),
-    });
+    const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -488,7 +492,7 @@ const handleChangegen = (e:any) => {
   formData.vehicles.some((vehicle:any) =>
     formData.returnVehicles.some(
       (returnVehicle:any) =>
-        returnVehicle.vehicleRegistration === vehicle.vehicleRegistration || vehicle.vin === returnVehicle.vin
+        returnVehicle.vehicleRegistration === vehicle.vehicleRegistration 
     )
   );
 
@@ -508,14 +512,13 @@ else{
         status:'pending',
         Review:'No',
       }
-      const response = await axios.post('https://zoomautos.co.uk/car',payload);
-      
-
+      const response = await axios.post('/api/subcontract', payload);
 
       
-      const { message, data } = response.data;
-      const jobId2 = data;  // 'data' is the jobId in this case
-      setJobId(jobId2);  // Set the jobId in state
+const { message, jobId } = response.data;
+
+setJobId(jobId);
+
       setLoading(false)
           setSuccess(true);
           
@@ -655,6 +658,17 @@ else{
 
 
             </div>
+            <div className="form-group">
+              <label htmlFor="fuel">Fuel Required?</label>
+              <select id="fuel" name="fuel" value={formData.fuel} onChange={handleChangegen} required>
+              <option value="" disabled  hidden>
+              Fuel Required?
+    </option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+
+            </div>
             </div>
       
             <div className='form-row'>
@@ -685,7 +699,7 @@ else{
     </option>
     <option value="DRIVEN">DRIVEN</option>
 <option value="TRANSPORT">TRANSPORT</option>
-<option value="ANY" disabled>ANY</option>
+<option value="ANY" >ANY</option>
 
 </select>
 
@@ -752,7 +766,8 @@ else{
       </div>
       <div className="form-row">
     <div className="form-group">
-        <label>Chassis/VIN</label>
+      <label htmlFor="vin">VIN <span style={{color:'red', fontSize:'0.8rem'}}> (Optional)</span></label>
+        
         <input
           type="text"
           name="vin"

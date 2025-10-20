@@ -1,7 +1,6 @@
 import React, { useState,  useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import './styles/majorforms.css';
 const MultidropoffVehicleForm =()=>{
     const [vehicleForms, setVehicleForms] = useState([{ id: Date.now() },{ id: Date.now() + 1 } ]);
     const [returnVehicleForms, setReturnVehicleForms] = useState([{ id: Date.now() }]);
@@ -111,13 +110,13 @@ const [formData, setFormData] = useState<Record<string, any>>({
             Review:'No',
           };
       
-          const response = await axios.post("https://zoomautos.co.uk/car", payload);
+const response = await axios.post('/api/subcontract', payload);
+
       
-      
-          const { message, data } = response.data;
-          
-      const jobId2 = data;  // 'data' is the jobId in this case
-      setJobId(jobId2);  // Set the jobId in state
+const { message, jobId } = response.data;
+
+setJobId(jobId);
+
       setLoading(false);
           setSuccess(true);
             
@@ -126,7 +125,7 @@ const [formData, setFormData] = useState<Record<string, any>>({
             const response2 = await axios.post("https://zoomautos.co.uk/api/Email/send-email", 
             {
             ...payload,
-            jobId:data,
+            jobId:jobId,
             } ,
             {
                 headers: {
@@ -172,13 +171,13 @@ const [formData, setFormData] = useState<Record<string, any>>({
 
       const handleEnquiry = async (index:any, registrationNumber:any) => {
         try {
-          const response = await fetch("https://zoomautos.co.uk/vehicle-enquiry", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ registrationNumber }),
-          });
+          const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
       
           if (!response.ok) {
             throw new Error(`Vehicle lookup failed. Status: ${response.status}`);
@@ -455,7 +454,7 @@ const [formData, setFormData] = useState<Record<string, any>>({
     </option>
     <option value="DRIVEN">DRIVEN</option>
 <option value="TRANSPORT">TRANSPORT</option>
-<option value="ANY" disabled>ANY</option>
+<option value="ANY" >ANY</option>
 
 </select>
 

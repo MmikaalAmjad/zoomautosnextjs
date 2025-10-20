@@ -95,10 +95,10 @@ const RecordFormCompleted = () => {
       
     const handleSubmit = async () => {
       try {
-        await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, formData);
+        await axios.patch(`/api/subcontract/${jobId}`, formData);
   
         // Fetch updated records
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -131,7 +131,7 @@ const RecordFormCompleted = () => {
     const fetchRecordById = async () => {
       console.log('Fetching record for jobId:', jobId); // Log the jobId being used
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

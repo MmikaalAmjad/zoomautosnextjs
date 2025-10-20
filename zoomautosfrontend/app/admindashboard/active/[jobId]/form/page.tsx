@@ -222,10 +222,11 @@ const handleVatChange = (e:any) => {
         const [deletemessage, setdeletemessage]=useState("")
     const handleSubmit = async () => {
       try {
+        const token = sessionStorage.getItem("Transport Admin AuthToken");
         setDeletionLoading(true);
         setdeletemessage(`Updating Activated JobID ${jobId}`);
         await axios.patch(
-          `https://zoomautos.co.uk/api/Subcontract/${jobId}`,
+          `/api/subcontract/${jobId}`,
           {
             ...formData, // Spread existing form data
             status: "Active",
@@ -241,7 +242,7 @@ const handleVatChange = (e:any) => {
         
   
         // Fetch updated records
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -269,13 +270,13 @@ const handleVatChange = (e:any) => {
           [name]: value,
         }));
       };
-      const token = sessionStorage.getItem("Transport Admin AuthToken");
-      
+
   useEffect(() => {
     const fetchRecordById = async () => {
       console.log('Fetching record for jobId:', jobId); // Log the jobId being used
+      const token = sessionStorage.getItem("Transport Admin AuthToken");
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

@@ -20,7 +20,7 @@ const DealerActiveRecordDetails = () => {
       const token = sessionStorage.getItem("authTokenDealer");
       console.log('Fetching record for jobId:', jobId); // Log the jobId being used
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

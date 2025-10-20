@@ -1,18 +1,50 @@
 import axios from "axios";
 import ContactForm from "./contactform";
-
+const baseUrl = process.env.LOCAL_URL;
 export const metadata = {
-  title: "Contact Us | Zoom Autos",
+  title: "Contact Us | Zoom Autos - Vehicle Transport & Recovery UK",
   description:
-    "Get in touch with Zoom Autos for car sales, delivery, or inquiries. Find our address, contact number, email, and working hours.",
+    "Get in touch with Zoom Autos for vehicle transport, car recovery, or logistics inquiries. Find our UK contact number, email, office address, and working hours.",
+  keywords: [
+    "Zoom Autos",
+    "contact Zoom Autos",
+    "vehicle transport UK",
+    "car recovery UK",
+    "UK car transport inquiries",
+    "vehicle logistics UK",
+    "UK vehicle transport services",
+    "fast car delivery UK",
+    "professional car transport",
+    "nationwide vehicle transport",
+    "logistics support UK",
+    "trusted car transport company",
+  ],
   openGraph: {
-    title: "Contact Zoom Autos",
+    title: "Contact Zoom Autos - UK Vehicle Transport & Recovery",
     description:
-      "Reach Zoom Autos for quality used cars, fast nationwide delivery, and expert customer support.",
+      "Reach out to Zoom Autos for professional vehicle transport, nationwide car recovery, and logistics services across the UK.",
     url: "https://zoomautos.co.uk/contact",
     siteName: "Zoom Autos",
+    images: [
+      {
+        url: "/contact-og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Zoom Autos - Vehicle Transport UK",
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Zoom Autos - Vehicle Transport & Recovery UK",
+    description:
+      "Get in touch with Zoom Autos for professional vehicle transport, car recovery, and logistics services across the UK.",
+    images: ["/contact-og-image.jpg"],
   },
 };
+
 
 const convertToAMPM = (time: string) => {
   const [hours, minutes] = time.split(":");
@@ -26,20 +58,34 @@ const convertToAMPM = (time: string) => {
 export default async function ContactPage() {
   // Fetch server-side so it's SEO-visible
   const [emailRes, contactRes, locationRes, timeRes] = await Promise.all([
-    axios.get("https://zoomautos.co.uk/api/LogisticsEmail"),
-    axios.get("https://zoomautos.co.uk/api/LogisticsContact"),
-    axios.get("https://zoomautos.co.uk/api/LogisticsLocation"),
-    axios.get("https://zoomautos.co.uk/api/LogTime"),
-  ]);
+  fetch(`${baseUrl}/api/logisticsemail`),
+  fetch(`${baseUrl}/api/contact`),
+  fetch(`${baseUrl}/api/logisticslocation`),
+  fetch(`${baseUrl}/api/timing`)
+]);
 
-  const email = emailRes.data.email || "";
-  const contactNo = contactRes.data.contactNo || "";
-  const { address, locationUrl } = locationRes.data;
-  let timings = timeRes.data.map((t: any) => ({
-    ...t,
-    startTime: convertToAMPM(t.startTime),
-    endTime: convertToAMPM(t.endTime),
-  }));
+const [emailData, contactData, locationData, timeData] = await Promise.all([
+  emailRes.json(),
+  contactRes.json(),
+  locationRes.json(),
+  timeRes.json()
+]);
+
+console.log(emailData, contactData, locationData, timeData);
+
+  
+
+
+let timings = timeData.map((t: any) => ({
+  ...t,
+  startTime: convertToAMPM(t.startTime),
+  endTime: convertToAMPM(t.endTime),
+}));
+  
+  const email = emailData.email || "";
+  const contactNo = contactData.contactNo || "";
+  const { address, locationUrl } = locationData;
+
 
 
 

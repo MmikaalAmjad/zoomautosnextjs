@@ -97,7 +97,7 @@ const [isEditModalOpen, setEditModalOpen] = useState(false);
       const token = sessionStorage.getItem("Transport Admin AuthToken");
      
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -105,7 +105,7 @@ const [isEditModalOpen, setEditModalOpen] = useState(false);
       });
 
         console.log(response.data.length);
-        const filteredData = response.data.filter((item:any) => item.status === "Active"
+        const filteredData = response.data.filter((item:any) => item.status.toLowerCase() === "active"
           && item.customername === client.name && 
 (item.customerid ? item.customerid === client.Id : true) // If customerId is empty, fallback to customer name check
 );
@@ -296,7 +296,7 @@ const [deletionloading,setDeletionLoading]=useState(false);
       setDeletionLoading(true);
       setdeletemessage(`Deleting JobID ${jobId}`);
       
-      await axios.delete(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+      await axios.delete(`/api/subcontract/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
       },});
@@ -344,7 +344,7 @@ const [deletionloading,setDeletionLoading]=useState(false);
           setDeletionLoading(true);
           setdeletemessage(`Marking JobID ${jobId} Completed`);
        
-            await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, { status: "Completed" }, {
+            await axios.patch(`/api/subcontract/${selectedJobId}`, { status: "Completed" }, {
               headers: {
                 Authorization: `Bearer ${token}`, // Add JWT token
                 "Content-Type": "application/json", // Ensure JSON format
@@ -361,7 +361,7 @@ const [deletionloading,setDeletionLoading]=useState(false);
           setDeletionLoading(true);
           setdeletemessage(`Marking JobID ${jobId} Aborted`);
        
-            await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, {
+            await axios.patch(`/api/subcontract/${selectedJobId}`, {
                 status: "Aborted",
                 reason: value,
                 dateOfCall,

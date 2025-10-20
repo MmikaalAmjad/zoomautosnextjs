@@ -90,13 +90,13 @@ const RegisteredContactFormStandardMovex = () => {
     const [error, setError] = useState(null);
     const handleEnquiry = async () => {
       try {
-        const response = await fetch('https://zoomautos.co.uk/vehicle-enquiry', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ registrationNumber }), // Correct the body here
-        });
+        const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
     
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -185,18 +185,13 @@ const [activeButton, setActiveButton] = useState("Used Car");
       };
     
       // Make the POST request
-      const response = await axios.post('https://zoomautos.co.uk/car', payload, {
-        headers: {
-          'Content-Type': 'application/json', // Specify JSON payload format
-        },
-      });
-
+      const response = await axios.post('/api/subcontract', payload);
 
       
-      const { message, data } = response.data;
-      
-  const jobId2 = data;  // 'data' is the jobId in this case
-  setJobId(jobId2);  // Set the jobId in state
+const { message, jobId } = response.data;
+
+setJobId(jobId);
+
   
   setLoading(false);
   setSuccess(true);
@@ -205,7 +200,7 @@ const [activeButton, setActiveButton] = useState("Used Car");
         const response2 = await axios.post("https://zoomautos.co.uk/api/Email/send-email", 
         {
         ...payload,
-        jobId:data,
+        jobId:jobId,
         } ,
         {
             headers: {
@@ -356,7 +351,7 @@ const [activeButton, setActiveButton] = useState("Used Car");
     </option>
     <option value="DRIVEN">DRIVEN</option>
 <option value="TRANSPORT">TRANSPORT</option>
-<option value="ANY" disabled>ANY</option>
+<option value="ANY" >ANY</option>
 
 </select>
 

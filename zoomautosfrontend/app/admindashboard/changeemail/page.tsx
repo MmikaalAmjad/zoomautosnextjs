@@ -14,7 +14,7 @@ const EmailManagerLogisitcs = () => {
     useEffect(() => {
         const fetchEmailData = async () => {
             try {
-                const response = await axios.get('https://zoomautos.co.uk/api/LogisticsEmail'
+                const response = await axios.get('/api/logisticsemail'
                     ,{ params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       }
                 );
@@ -35,7 +35,7 @@ const EmailManagerLogisitcs = () => {
 
         try {
             const response = await axios.put(
-                'https://zoomautos.co.uk/api/LogisticsEmail',
+                '/api/logisticsemail',
                 { email: newEmail },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

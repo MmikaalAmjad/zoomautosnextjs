@@ -36,11 +36,12 @@ const LoginFormTransportAdmin = () => {
     setError('');
 
     try {
-      const response = await fetch('https://zoomautos.co.uk/api/moveadmin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch('/api/admin/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData),
+});
+
 
       const data = await response.json();
 

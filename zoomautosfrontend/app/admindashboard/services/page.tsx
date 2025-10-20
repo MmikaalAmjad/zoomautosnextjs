@@ -32,7 +32,7 @@ const ServiceForm = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get('https://zoomautos.co.uk/api/moveservices', {
+      const response = await axios.get('/api/services', {
         params: { _t: new Date().getTime() },
       });
       setServices(response.data);
@@ -44,10 +44,10 @@ const ServiceForm = () => {
   const onSubmit = async (data:any) => {
     try {
       if (editingService) {
-        await axios.put(`https://zoomautos.co.uk/api/moveservices/${editingService._id}`, data);
+        await axios.put(`/api/services/${editingService._id}`, data);
         setSnackbar({ open: true, message: 'Service updated successfully!', severity: 'success' });
       } else {
-        await axios.post('https://zoomautos.co.uk/api/moveservices', { formType: 'WhyUSForm', ...data });
+        await axios.post('/api/services', { formType: 'WhyUSForm', ...data });
         setSnackbar({ open: true, message: 'Service added successfully!', severity: 'success' });
       }
       fetchServices();
@@ -68,7 +68,7 @@ const ServiceForm = () => {
   const handleDelete = async (id:any) => {
     if (window.confirm('Are you sure you want to delete this service?')) {
       try {
-        await axios.delete(`https://zoomautos.co.uk/api/moveservices/${id}`);
+        await axios.delete(`/api/services/${id}`);
         setSnackbar({ open: true, message: 'Service deleted successfully!', severity: 'success' });
         fetchServices();
       } catch (error) {

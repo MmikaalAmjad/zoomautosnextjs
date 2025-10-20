@@ -280,7 +280,7 @@ if (!numericPrice || isNaN(numericPrice) || numericPrice <= 0) {
         
         
         await axios.patch(
-          `https://zoomautos.co.uk/api/Subcontract/${jobId}`,
+          `/api/subcontract/${jobId}`,
           {
             ...formData, // Spread existing form data
             status: "Active",
@@ -301,7 +301,7 @@ vat:includeVat,
         setDeletionLoading(false);
   
         // Fetch updated records
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -353,7 +353,7 @@ vat:includeVat,
     const fetchRecordById = async () => {
       console.log('Fetching record for jobId:', jobId); // Log the jobId being used
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

@@ -21,7 +21,7 @@ const RegisteredClientsOnlyTable = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const clientsResponse = await axios.get("https://zoomautos.co.uk/api/Signup", {
+          const clientsResponse = await axios.get("/api/registration", {
             headers: {
               Authorization: `Bearer ${token}`, // Include token in headers
           },
@@ -115,7 +115,7 @@ const RegisteredClientsOnlyTable = () => {
 
     const handleSaveChanges = async () => {
         try {
-            await axios.put(`https://zoomautos.co.uk/api/Signup/${selectedClient._id}`, formData
+            await axios.put(`/api/registration/${selectedClient._id}`, formData
               , {
                 headers: {
                   Authorization: `Bearer ${token}`, // Include token in headers

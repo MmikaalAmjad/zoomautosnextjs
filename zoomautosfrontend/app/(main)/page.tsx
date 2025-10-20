@@ -9,6 +9,7 @@ import GetQuote from "@/components/homepage/getaquote/getaquote";
 import MoveReviewForm from "@/components/homepage/reviews/reviewform";
 import CarImageComponent from "@/components/homepage/carimagecomponent/carimagecomponent";
 import MoveBackground from "@/components/homepage/background/background";
+import MoveRatingWithFeedback from "@/components/homepage/reviews/overallreviews";
 export default function Home() {
   return (
     <div style={{backgroundColor:'white'}}>
@@ -40,7 +41,7 @@ export default function Home() {
         <Transport/>
         <GetQuote/>
         <BecomeDriver/>
-        <MoveReviewForm/>
+        <MoveRatingWithFeedback/>
     </div>
   );
 }

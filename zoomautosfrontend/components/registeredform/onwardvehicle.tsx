@@ -135,11 +135,13 @@ const [jobId, setJobId] = useState('');
           throw new Error("Please enter a registration number.");
         }
     
-        const response = await fetch("https://zoomautos.co.uk/vehicle-enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ registrationNumber }),
-        });
+        const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
     
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -307,11 +309,13 @@ const handleChange = (e: any, index: number | null = null) => {
 
 
     try {
-      const response = await axios.post('https://zoomautos.co.uk/car', payload);
+      const response = await axios.post('/api/subcontract', payload);
+
       
-      const { message, data } = response.data;
-      const jobId2 = data;  // 'data' is the jobId in this case
-      setJobId(jobId2);  // Set the jobId in state
+const { message, jobId } = response.data;
+
+setJobId(jobId);
+
       setLoading(false);
           setSuccess(true);
             // Hide success overlay after 2 seconds
@@ -321,7 +325,7 @@ const handleChange = (e: any, index: number | null = null) => {
         const response2 = await axios.post("https://zoomautos.co.uk/api/Email/send-email", 
         {
         ...payload,
-        jobId:data,
+        jobId:jobId,
         } ,
         {
             headers: {

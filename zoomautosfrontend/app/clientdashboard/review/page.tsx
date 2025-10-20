@@ -37,14 +37,14 @@ const ReviewFormWithID = () => {
       if (!dealerDetails?.Id ) return;
 
       try {
-        const response = await axios.get('https://zoomautos.co.uk/api/Subcontract', {
+        const response = await axios.get('/api/subcontract', {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
           params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
         const filteredData = response.data.filter(
-          (item:any) => item.status === "Completed" &&
+          (item:any) => item.status.toLowerCase() === "completed" &&
                     item.customerid===dealerDetails.Id && item.Review==="No"
         );
 
@@ -89,7 +89,7 @@ const ReviewFormWithID = () => {
       console.log("Submitting Data:", formData); // Debugging step
   
       setLoading(true);
-      const response = await axios.post('https://zoomautos.co.uk/api/movereviews', formData, {
+      const response = await axios.post('/api/movereviews', formData, {
         headers: { 'Content-Type': 'application/json' },
       });
   

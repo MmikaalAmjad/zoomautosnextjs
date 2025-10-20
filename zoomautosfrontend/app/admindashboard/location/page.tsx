@@ -14,7 +14,7 @@ const LogisticsLocation = () => {
     useEffect(() => {
         const fetchLocationData = async () => {
             try {
-                const response = await axios.get('https://zoomautos.co.uk/api/LogisticsLocation',{ params: { _t: new Date().getTime() } // Add timestamp to bypass cache
+                const response = await axios.get('/api/logisticslocation',{ params: { _t: new Date().getTime() } // Add timestamp to bypass cache
             });
                 setLocationUrl(response.data.locationUrl || '');
                 setAddress(response.data.address || '');
@@ -29,7 +29,7 @@ const LogisticsLocation = () => {
     const handleSave = async () => {
         try {
             const response = await axios.put(
-                'https://zoomautos.co.uk/api/LogisticsLocation',
+                '/api/logisticslocation',
                 { locationUrl, address },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

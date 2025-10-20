@@ -6,7 +6,9 @@ import { useTransportAdmin } from "@/components/transportadmincontext/adminconte
 import { usePathname, useRouter } from "next/navigation";
 import { MdDateRange } from "react-icons/md";
 
-
+interface LogoData {
+  Image: string[];
+}
 const LogisticsAdminHomepage = () => {
   const { TransportAdminDetails, updateTransportAdminDetails } = useTransportAdmin();
   const navigate = useRouter();
@@ -21,13 +23,16 @@ const [logos, setLogosCount] = useState(0);
   useEffect(() => {
     const fetchLogos = async () => {
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/logos",{
-                params: {
-          _t: new Date().getTime(), // Add timestamp to bypass cache
-        },
-      
-      });
-        setLogosCount(response.data.length);
+        const res = await fetch("/api/logos?_t=" + new Date().getTime());
+
+if (!res.ok) {
+  const errorText = await res.text(); // read body only on error
+  throw new Error(errorText || "Failed to fetch logos");
+}
+
+const data: LogoData[] = await res.json(); // safe to parse JSON now
+
+        setLogosCount(data.length);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching logos:", error);
@@ -49,22 +54,32 @@ useEffect(() => {
 
   const fetchData = async () => {
     try {
-      const jobsResponse = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      
+      const clientsResponse = await axios.get("/api/registration", {
         params: { _t: new Date().getTime() },
       });
 
-      const clientsResponse = await axios.get("https://zoomautos.co.uk/api/Signup", {
-        params: { _t: new Date().getTime() },
-      });
+const response = await fetch(`/api/subcontract?_t=${new Date().getTime()}`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+});
 
-      const jobsData = jobsResponse.data;
+if (!response.ok) {
+  throw new Error(`Error fetching subcontract jobs: ${response.status}`);
+}
 
-      const pendingJobs = jobsData.filter((job: any) => job.status === "pending").length;
-      const activeJobs = jobsData.filter((job: any) => job.status === "Active").length;
-      const completedJobs = jobsData.filter((job: any) => job.status === "Completed" || job.status === "Aborted").length;
+const jobsData = await response.json();
+
+const pendingJobs = jobsData.filter((job: any) => job.status.toLowerCase() === "pending").length;
+const activeJobs = jobsData.filter((job: any) => job.status.toLowerCase() === "active").length;
+const completedJobs = jobsData.filter(
+  (job: any) => job.status.toLowerCase() === "completed" || job.status.toLowerCase() === "aborted"
+).length;
+
+console.log("Pending:", pendingJobs, "Active:", activeJobs, "Completed:", completedJobs);
 
       setPendingJobsCount(pendingJobs);
       setActiveJobsCount(activeJobs);
@@ -83,19 +98,19 @@ useEffect(() => {
 }, [token]); // ✅ Run whenever token is set
   // Navigation functions
   const openCompletedJobs = () => {
-    navigate.push("/Logistics/AdminPortal/Completed");
+    navigate.push("/admindashboard/completed");
   };
 
   const openPendingJobs = () => {
-    navigate.push("/Logistics/AdminPortal/Pending");
+    navigate.push("/admindashboard/pending");
   };
 
   const openActiveJobs = () => {
-    navigate.push("/Logistics/AdminPortal/Active");
+    navigate.push("/admindashboard/active");
   };
 
   const openRegisteredClients = () => {
-    navigate.push("/Logistics/AdminPortal/RegisteredCustomers");
+    navigate.push("/admindashboard/registeredclients");
   };
 
   if (loading) {

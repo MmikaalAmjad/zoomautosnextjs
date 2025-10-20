@@ -90,16 +90,16 @@ const [isEditModalOpen, setEditModalOpen] = useState(false);
     const fetchRecords = async () => {
       const token = sessionStorage.getItem("Transport Admin AuthToken");
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
           params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
-
+      console.log(response)
         
         const filteredData = response.data.filter(
-      (item:any) => item.status === "Active"
+      (item:any) => item.status.toLowerCase() === "active"
     );
 const sortedData = filteredData.sort((a: { fromDate: string }, b: { fromDate: string }) => {
   return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
@@ -286,7 +286,7 @@ setFilteredRecords(sortedData);
     setDeletionLoading(true);
       setdeletemessage(`Editing JobID ${jobId}`);
     try {
-      await axios.delete(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+      await axios.delete(`/api/subcontract/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
       },});
@@ -331,7 +331,7 @@ const handleCloseModal = () => {
           setDeletionLoading(true);
           setdeletemessage(`Marking JobID ${jobId} Completed`);
        
-            await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, { status: "Completed" }, {
+            await axios.patch(`/api/subcontract/${selectedJobId}`, { status: "Completed" }, {
               headers: {
                 Authorization: `Bearer ${token}`, // Add JWT token
                 "Content-Type": "application/json", // Ensure JSON format
@@ -348,7 +348,7 @@ const handleCloseModal = () => {
           setDeletionLoading(true);
           setdeletemessage(`Marking JobID ${jobId} Aborted`);
        
-            await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, {
+            await axios.patch(`/api/subcontract/${selectedJobId}`, {
                 status: "Aborted",
                 // reason: value,
                 dateOfCall,
@@ -389,7 +389,7 @@ const handleCloseModal = () => {
 //         }
 
 //         // Update job status to 'Completed' in the database
-//         await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, { status: 'Completed' });
+//         await axios.patch(`/api/subcontract/${jobId}`, { status: 'Completed' });
 
 //         // Remove the completed record from Active list
 //         setRecords(records.filter((record) => record.jobId !== jobId));
@@ -428,7 +428,7 @@ const handleCloseModal = () => {
     router.push(`/admindashboard/active/${jobId}`);
   };
   const handlEdit =(jobId:any)=>{
-    router.push(`/admindashboard/active/${jobId}/EditForm`)
+    router.push(`/admindashboard/active/${jobId}/form`)
   }
   useEffect(() => {
       if (deletionloading) {

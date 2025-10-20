@@ -31,13 +31,13 @@ const RecordListPending = () => {
   // ✅ Memoized fetchRecords
 const fetchRecords = useCallback(async () => {
   try {
-    const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+    const response = await axios.get("/api/subcontract", {
       headers: { Authorization: `Bearer ${token}` },
       params: { _t: new Date().getTime() }, // Add timestamp to bypass cache
     });
 
     const filteredData = response.data.filter(
-      (item:any) => item.status === "pending"
+      (item:any) => item.status.toLowerCase() === "pending"
     );
 
     const sortedData = filteredData.sort((a: { fromDate: string }, b: { fromDate: string }) => {
@@ -246,14 +246,14 @@ useEffect(() => {
   //   }
 
   //   try {
-  //     await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, {
+  //     await axios.patch(`/api/subcontract/${selectedJobId}`, {
   //       status: "Active",
   //       price: parseFloat(price),
   //     });
 
   //     // Re-fetch updated records
-  //     const response = await axios.get("https://zoomautos.co.uk/api/Subcontract");
-  //     const filteredData = response.data.filter((item) => item.status === "pending");
+  //     const response = await axios.get("/api/subcontract");
+  //     const filteredData = response.data.filter((item) => item.status.toLowerCase() === "pending");
   //     setRecords(filteredData);
 
   //     alert("Status updated to active with price: " + price);
@@ -275,14 +275,14 @@ useEffect(() => {
   //     }
   
   //     // Send the update request with price and status
-  //     await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+  //     await axios.patch(`/api/subcontract/${jobId}`, {
   //       status: "Active",
   //       price: parseFloat(price), // Convert to number
   //     });
   
   //     // Re-fetch the updated records from the server
-  //     const response = await axios.get("https://zoomautos.co.uk/api/Subcontract");
-  //     const filteredData = response.data.filter((item) => item.status === "pending");
+  //     const response = await axios.get("/api/subcontract");
+  //     const filteredData = response.data.filter((item) => item.status.toLowerCase() === "pending");
   //     setRecords(filteredData); // Update the records with the latest data
   
   //     alert("Status updated to active with price: " + price);
@@ -299,7 +299,7 @@ useEffect(() => {
       setDeletionLoading(true);
       setdeletemessage(`Deleting JobID ${jobId}`);
     try {
-      await axios.delete(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+      await axios.delete(`/api/subcontract/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
       },
@@ -315,7 +315,7 @@ useEffect(() => {
 
   
 const openEditModal = (jobId:Number) => {
-router.push(`/admindashboard/Pending/record-details/${jobId}/Form`)  
+router.push(`/admindashboard/Pending/record-details/${jobId}/form`)  
 };
 
   // Function to handle view action
@@ -323,7 +323,7 @@ router.push(`/admindashboard/Pending/record-details/${jobId}/Form`)
     router.push(`/admindashboard/Pending/record-details/${jobId}`);
   };
   const handleActive= (jobId:Number)=>{
-    router.push(`/admindashboard/Pending/record-details/${jobId}/ActivationForm`)
+    router.push(`/admindashboard/Pending/record-details/${jobId}/activationform`)
   }
 
 

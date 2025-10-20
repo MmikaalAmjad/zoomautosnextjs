@@ -26,13 +26,13 @@ const Sidebar = () => {
     if (!token) return;
     
     try {
-      const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+      const response = await axios.get("/api/subcontract", {
         headers: { Authorization: `Bearer ${token}` },
         params: { _t: new Date().getTime() }
       });
 
       const filteredData = response.data.filter(
-        (item:any) => item.status === "Active" && item.viewbyclient === false
+        (item:any) => item.status.toLowerCase() === "active" && item.viewbyclient === false
       );
 
       setRecords(filteredData.length);
@@ -76,16 +76,16 @@ useJobListener(dealerDetails?.Id, fetchRecords);
     if (location === "/dealerdashboard/active") {
       const updateViewStatus = async () => {
         try {
-          const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+          const response = await axios.get("/api/subcontract", {
             headers: { Authorization: `Bearer ${token}` },
             params: { _t: new Date().getTime() }
           });
 
           const updates = response.data
-            .filter((item:any) => item.status === "Active" && item.viewbyclient === false)
+            .filter((item:any) => item.status.toLowerCase() === "active" && item.viewbyclient === false)
             .map((item:any) => 
               axios.patch(
-                `https://zoomautos.co.uk/api/Subcontract/${item.jobId}`, 
+                `/api/subcontract/${item.jobId}`, 
                 { viewbyclient: true },
                 { headers: { Authorization: `Bearer ${token}` } }
               )

@@ -13,7 +13,7 @@ const Services = () => {
     // Fetch features from the backend
     const fetchservices = async () => {
       try {
-        const response = await axios.get('https://zoomautos.co.uk/api/moveservices', {
+        const response = await axios.get('/api/services', {
           
         params: {
           _t: new Date().getTime(), // Add timestamp to bypass cache

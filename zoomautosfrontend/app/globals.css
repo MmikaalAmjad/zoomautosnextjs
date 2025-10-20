@@ -3594,3 +3594,586 @@ button[type="submit"] {
   display: inline-block;
 }
 
+
+.footer {
+  width: 100%;
+  background-color: #01103b;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  
+  
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  
+}
+
+.footer-section h4 {
+  color: #e80f17;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #e80f17;
+}
+.social-icons {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  gap: 15px;               /* Space between icons */
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  align-self: center;
+  transition: color 0.3s ease;
+}
+
+
+.social-icons a:hover {
+  color: #e80f17;
+}
+
+.footer-bottom {
+  border-top: 1px solid #01103b;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Business Hours Styling */
+.hours-list {
+  margin-top: 10px;
+  text-align: left; /* Align hours text to the left */
+}
+
+.hours-list div {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.hours-list span {
+  font-size: 14px;
+  color: #fff;
+}
+
+.hours-list div:first-child span {
+  font-weight: bold; /* Highlight current day */
+}
+
+.hours-list span:first-child {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column;
+  }
+
+  .footer-section {
+      text-align: center;
+  }
+
+  .hours-list {
+      text-align: center; /* Center hours on mobile */
+  }
+}
+
+
+.link {
+  text-decoration: none;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #e80f17;
+}
+
+.active-link {
+  color: #e80f17;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+.image-gallery {
+  position: relative; /* Make the image gallery a positioning context */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  margin-right: 20px; /* Space between gallery and car info */
+}
+.video-frame {
+  width: 100%;
+  max-width: 800px; /* Optional: limit video width */
+  height: 450px;
+  border: none;
+  margin-bottom: 10px; /* Space between video and thumbnails */
+}
+
+.media-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-details-container{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+  border-radius: 40px;
+  padding: 25px 35px;
+  border: 5px solid #01103b;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 30px 30px 30px -20px;
+ }
+ .details-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.details-section {
+  width: 500px;
+  flex: 1;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.details-section-part {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distributes space between items */
+  align-items: center; /* Aligns items vertically in the center */
+  border-bottom: #333 1px solid; /* Keep your border */
+}
+.left-arrow{
+  left:10px;
+}
+.right-arrow{
+  right:10px;
+}
+.details-section-part p {
+  margin: 0; /* Remove default margin from <p> elements */
+  display: flex; /* Make <p> a flex container */
+  justify-content: space-between; /* Allows for positioning of <strong> and <span> */
+  width: 100%; /* Ensure <p> takes the full width */
+  color: #01103b;
+}
+
+.details-section-part p span {
+  color: #01103b;
+  margin-right: 0; /* This can be removed as it's not needed */
+}
+
+.containerbefore {
+  background-color: #293e79;
+  height: 600px;
+  width: 100%;
+}
+
+.containerbefore h1 {
+  color: #fff;
+  padding-top: 20%;
+  text-align: center;
+  font-size: xx-large;
+  
+}
+.detailsformat{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+.mains-image {
+  width: 700px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.main-video {
+  width: 700px;
+  height: 500px;
+}
+.thumbnails-container {
+  display: flex;
+  margin-top: 10px; /* Space between main image and thumbnails */
+}
+.caricondetails{
+  display: 'flex';
+  flex-direction: 'row'; 
+  flex-wrap: 'wrap'; 
+  
+}
+.thumbnail-image,
+.thumbnail-video {
+  width: 40px; /* Adjust thumbnail size */
+  height: 20px; /* Maintain aspect ratio */
+  cursor: pointer; /* Indicate clickable thumbnails */
+  margin-right: 5px; /* Space between thumbnails */
+  opacity: 0.7;
+  border: 2px solid transparent; /* Default border */
+}
+.cariconsdetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+  padding: 10px;
+  justify-content: center; /* Center items in the grid */
+}
+.thumbnail-wrapper.active .thumbnail-image,
+.thumbnail-wrapper.active .thumbnail-video {
+  border: 2px solid #007bff;
+}
+
+
+.icons-text-container {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Reset margins */
+}
+
+.icons-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 150px;
+  text-align: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+.icons {
+  font-size: 48px; /* Icon size */
+  color: #c70d1c; /* Icon color */
+}
+
+.icon-text h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #555; /* Text color */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #c70d1c;
+  background-color: #01103b;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s;
+}
+
+.arrow:hover {
+  background-color: #333;
+}
+.thumbnails:hover {
+  border: 2px solid #007bff; /* Highlight border on hover */
+}
+.thumbnails.active {
+  border: 2px solid #0056b3; /* Dark blue border for active state */
+  opacity: 1; /* Fully visible for the active thumbnail */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .car-details-container {
+    width: 90%; /* Make container width more flexible */
+    padding: 15px 25px; /* Adjust padding for smaller screens */
+  }
+
+  .mains-image {
+    width: 100%;
+    height: auto; /* Ensure the image fits well on mobile */
+  }
+  .detailsformat {
+    display: flex; /* Ensure flex container behavior */
+    flex-direction: column;
+    width: 100%; /* Match the width of the parent */
+}
+.details-section{
+  width: 100%;
+}
+.cariconsdetails {
+  
+  grid-template-columns: repeat(2, 150px); /* Still 4 items with fixed width */
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.cardetailshead h1{
+  align-self: center;
+  font-size: medium;
+
+}
+
+.arrow {
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  
+}
+
+
+
+  .thumbnails-container {
+    margin-top: 5px;
+    justify-content: center; /* Center thumbnails on smaller screens */
+  }
+
+  .thumbnails {
+    height: 10px;
+    width: 20px; /* Smaller thumbnails */
+  }
+  .icons {
+    font-size: 24px;
+  }
+
+  .arrow-buttons {
+    padding: 0 5px; /* Reduce padding on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .car-details-container {
+    padding: 10px 15px;
+  }
+
+  .mains-image {
+    width: 100%;
+    height: 300px; /* Adjust image height for small screens */
+  }
+
+  
+}
+
+/* Main Container Styling */
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between grid items */
+  justify-items: center; /* Centers items horizontally */
+  align-items: start; /* Aligns items at the top of each row */
+  margin: 0 auto;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+
+/* Slider Container */
+.reviewslider-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Responsive width */
+  padding: 25px;
+  
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  overflow: hidden;
+}
+
+/* Reviews List (Grid Layout) */
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Responsive columns */
+  gap: 30px; /* Space between grid items */
+  width: 100%;
+  max-width: 1200px; /* Centered container limit */
+  margin: 0 auto; /* Center container */
+  padding: 20px; /* Optional padding */
+  box-sizing: border-box;
+}
+
+.review-header {
+  display: flex;
+  align-items: center; /* Vertically centers the content */
+  justify-content: center; /* Horizontally centers the content */
+  gap: 10px; /* Adds space between the avatar and text */
+}
+/* Review Tile Styling */
+.review-tile {
+  width: 300px; /* Fixed width */
+  min-height: 350px; /* Ensures all tiles have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Centers content */
+  border: 1px solid #ddd;
+  padding: 15px;
+  gap: 10px;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Review Tile Content */
+.review-text {
+  margin: 8px 0;
+  color: black;
+  font-size: 1em;
+}
+
+.review-text {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto; /* Makes the text scrollable */
+  text-align: left;
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.review-text b {
+  font-weight: bold;
+}
+
+.rating {
+  margin-bottom: 10px;
+}
+
+.rating span {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.star-filled {
+  color: #e80f17;
+}
+
+.star-empty {
+  color: gray;
+}
+
+
+.slick-dots li button:before {
+  color: #e80f17; /* Red dots */
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff0000; /* Bright red for active dot */
+}
+
+/* Slider Arrows */
+.reviewslider-container .slick-prev:before,
+.reviewslider-container .slick-next:before {
+  color: #e80f17;
+  font-size: 20px;
+}
+.review-avatar {
+  width: 20%;
+  height: 20%;
+}
+
+
+/* Responsive Design */
+
+/* Tablets and Medium Screens */
+@media (max-width: 768px) {
+  .reviewslider-container {
+    width: 90%; /* Adjust width for medium screens */
+    padding: 20px;
+  }
+
+  .reviews-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .review-tile {
+    padding: 12px;
+    width: 300px;
+  }
+
+  .review-text {
+    font-size: 0.9em;
+  }
+}
+
+/* Mobile Phones and Smaller Screens */
+@media (max-width: 480px) {
+  .reviewslider-container {
+    width: 96%; /* Adjust width for smaller screens */
+    padding: 20px;
+  }
+
+  .reviews-list {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .review-tile {
+    padding: 10px;
+    width: 200px;
+  }
+
+  .review-text {
+    font-size: 0.8em;
+  }
+
+  .rating span {
+    font-size: 1em; /* Adjust star size for smaller screens */
+  }
+}

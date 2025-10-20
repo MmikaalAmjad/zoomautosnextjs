@@ -47,14 +47,14 @@ const RegisteredClientsTable: React.FC = () => {
       const token = sessionStorage.getItem("Transport Admin AuthToken");
       try {
         const [clientsResponse, byCompanyResponse, noCompanyResponse] = await Promise.all([
-          axios.get('https://zoomautos.co.uk/api/Signup', {
+          axios.get('/api/registration', {
             params: { _t: new Date().getTime() }, // Bypass cache
           }),
-          axios.get('https://zoomautos.co.uk/api/Subcontract/job-count/by-company', {
+          axios.get('/api/subcontract?type=by-company', {
             headers: { Authorization: `Bearer ${token}` },
             params: { _t: new Date().getTime() },
           }),
-          axios.get('https://zoomautos.co.uk/api/Subcontract/job-count/no-company', {
+          axios.get('/api/subcontract?type=by-company', {
             headers: { Authorization: `Bearer ${token}` },
             params: { _t: new Date().getTime() },
           }),

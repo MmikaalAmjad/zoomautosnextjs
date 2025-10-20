@@ -22,20 +22,17 @@ const AboutUs: React.FC = () => {
   }, []);
 
   const fetchContent = async (): Promise<void> => {
-    try {
-      const response = await axios.get<WhatWeDoItem[]>(
-        "https://zoomautos.co.uk/api/whatwedo",
-        {
-          params: {
-            _t: new Date().getTime(), // Add timestamp to bypass cache
-          },
-        }
-      );
-      setContent(response.data);
-    } catch (error) {
-      console.error("Error fetching content:", error);
+  try {
+    const res = await fetch(`/api/whatwedo?_t=${new Date().getTime()}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch content");
     }
-  };
+    const data: WhatWeDoItem[] = await res.json();
+    setContent(data);
+  } catch (error) {
+    console.error("Error fetching content:", error);
+  }
+};
 
   return (
     <section className="about-us-container">

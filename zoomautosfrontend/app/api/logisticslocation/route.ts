@@ -1,28 +1,48 @@
-import { NextResponse } from 'next/server';
-import axios from 'axios';
-
+import connectDB from "@/app/lib/db";
+import Location from "@/app/models/logisticslocation";
+import { NextRequest, NextResponse } from "next/server";
+import { isTokenValid } from "@/app/lib/authmiddlewere";
 export async function GET() {
   try {
-    // Fetch location data from your backend server
-    const response = await axios.get('https://zoomautos.co.uk/api/LogisticsLocation', {
-      params: {
-        _t: new Date().getTime(), // prevent caching
-      },
-    });
+    await connectDB();
+    const location = await Location.findOne();
+    if (!location) {
+      return NextResponse.json({ message: "Location data not found." }, { status: 404 });
+    }
+    return NextResponse.json(location);
+  } catch (err: any) {
+    return NextResponse.json({ message: "Server error", error: err.message }, { status: 500 });
+  }
+}
 
-    // Extract data
-    const locationUrl = response.data?.locationUrl || '';
-    const address = response.data?.address || '';
+export async function PUT(req: NextRequest) {
+  try {
+    await connectDB();
+    const valid = await isTokenValid(req);
+      if (!valid) {
+        return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+      }
+    const body = await req.json();
+    const { locationUrl, address } = body;
 
-    return NextResponse.json({ locationUrl, address }, { status: 200 });
-  } catch (error: any) {
-    console.error('❌ Error fetching location data:', error.response?.data || error.message);
-    return NextResponse.json(
-      {
-        message: 'Error fetching location data',
-        error: error.response?.data || error.message,
-      },
-      { status: 500 }
-    );
+    if (!locationUrl || !address) {
+      return NextResponse.json(
+        { message: "Location URL and address are required." },
+        { status: 400 }
+      );
+    }
+
+    let location = await Location.findOne();
+    if (!location) {
+      location = new Location({ locationUrl, address });
+    } else {
+      location.locationUrl = locationUrl;
+      location.address = address;
+    }
+
+    await location.save();
+    return NextResponse.json({ message: "Location data updated successfully." });
+  } catch (err: any) {
+    return NextResponse.json({ message: "Server error", error: err.message }, { status: 500 });
   }
 }

@@ -66,7 +66,7 @@ const handleSave = async (field: keyof DealerDetails) => {
 
   try {
     const response = await fetch(
-      `https://zoomautos.co.uk/api/Signup/${dealerDetails.Id}`,
+      `/api/registration/${dealerDetails.Id}`,
       {
         method: "PATCH",
         headers: {
@@ -99,7 +99,7 @@ const handleSave = async (field: keyof DealerDetails) => {
     const token = sessionStorage.getItem("authTokenDealer");
 
     try {
-      const response = await fetch(`https://zoomautos.co.uk/api/reset-password/${dealerDetails.Id}`, {
+      const response = await fetch(`/api/resetpassword/${dealerDetails.Id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

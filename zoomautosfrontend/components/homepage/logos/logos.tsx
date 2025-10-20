@@ -23,27 +23,25 @@ const LogoSlideshow: React.FC = () => {
   useEffect(() => {
     const fetchLogos = async () => {
       try {
-        const response = await axios.get<LogoData[]>("https://zoomautos.co.uk/api/logos", {
-          params: { _t: new Date().getTime() }, // prevent cache
-        });
+const res = await fetch("/api/logos?_t=" + new Date().getTime());
 
-        const logoImages = response.data;
-        if (logoImages.length === 0) {
-          setLoading(false);
-          return;
-        }
+if (!res.ok) {
+  const errorText = await res.text(); // read body only on error
+  throw new Error(errorText || "Failed to fetch logos");
+}
 
-        setLogos(logoImages);
+const data: LogoData[] = await res.json(); // safe to parse JSON now
+setLogos(data);
 
-        // Calculate smallest image size
-        const sizePromises = logoImages.flatMap((logo) =>
+        // Calculate smallest image dimensions
+        const sizePromises = data.flatMap((logo) =>
           logo.Image.map(
             (img) =>
               new Promise<ImageSize>((resolve) => {
                 const image = new Image();
                 image.src = img;
-                image.onload = () =>
-                  resolve({ width: image.width, height: image.height });
+                image.onload = () => resolve({ width: image.width, height: image.height });
+                image.onerror = () => resolve({ width: 100, height: 100 });
               })
           )
         );
@@ -52,8 +50,8 @@ const LogoSlideshow: React.FC = () => {
         const minWidth = Math.min(...sizes.map((s) => s.width));
         const minHeight = Math.min(...sizes.map((s) => s.height));
         setSmallestSize({ width: minWidth, height: minHeight });
-      } catch (error) {
-        console.error("Error fetching logos:", error);
+      } catch (err) {
+        console.error("Error fetching logos:", err);
       } finally {
         setLoading(false);
       }
@@ -61,6 +59,7 @@ const LogoSlideshow: React.FC = () => {
 
     fetchLogos();
   }, []);
+
 
   // ✅ Typed Slider settings
   const sliderSettings: Settings = {
@@ -103,7 +102,9 @@ const LogoSlideshow: React.FC = () => {
   };
 
   if (loading) {
-    return <p style={{ textAlign: "center" }}>Loading logos...</p>;
+    return <h2 style={{ marginBottom: "10px" }} className="about-us-title">
+        Our Clients
+      </h2>;
   }
 
   return (

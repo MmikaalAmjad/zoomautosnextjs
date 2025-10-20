@@ -37,7 +37,7 @@ const MoveRatingWithFeedback = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get('https://zoomautos.co.uk/api/movereviews',
+        const response = await axios.get('/api/movereviews',
           {
             
           params: {

@@ -23,7 +23,7 @@ const SelfEmployedDriver = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/roles", {
+        const response = await axios.get("/api/roles", {
           
         params: {
           _t: new Date().getTime(), // Add timestamp to bypass cache
@@ -43,7 +43,7 @@ const SelfEmployedDriver = () => {
   useEffect(() => {
     const fetchResponsibilities = async () => {
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/responsibilities");
+        const response = await axios.get("/api/responsibilities");
         setResponsibilites(response.data);
       } catch (err) {
         console.error("Error fetching responsibilities:", err);

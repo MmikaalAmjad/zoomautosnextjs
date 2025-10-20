@@ -61,7 +61,7 @@ const [Failure,setFailure]=useState(false);
             return;
         }
 
-        const response = await axios.post('https://zoomautos.co.uk/api/Signup', formDataSignup, {
+        const response = await axios.post('/api/registration', formDataSignup, {
             headers: { "Content-Type": "application/json" }
         });
 
@@ -115,7 +115,7 @@ const [Failure,setFailure]=useState(false);
     setLoading(true);
 
     try {
-        const response = await fetch('https://zoomautos.co.uk/api/Signup/login', {  // Ensure correct API URL
+        const response = await fetch('/api/login', {  // Ensure correct API URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

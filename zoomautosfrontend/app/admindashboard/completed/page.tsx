@@ -26,14 +26,14 @@ const path=usePathname();
       const token = sessionStorage.getItem("Transport Admin AuthToken");
       
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
           params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
 
-        const filteredData = response.data.filter((item:any) => item.status === "Completed"|| item.status==="Aborted");
+        const filteredData = response.data.filter((item:any) => item.status.toLowerCase() === "completed"|| item.status.toLowerCase()==="aborted");
 
         setRecords(filteredData);
         setLoading(false);
@@ -371,7 +371,7 @@ const handleView = (jobId:any) => {
             <tbody>
               {filteredRecords.map((job:any) => (
                               <tr key={job.jobId}>
-                                {job.servicetype === 'ONWARD VEHICLE' && job.status ==="Completed" && (
+                                {job.servicetype === 'ONWARD VEHICLE' && job.status.toLowerCase() ==="completed" && (
                                   <>
                                     <td>{job.jobId || 'N/A'}</td>
                                     <td>{(job.customercompanyName === "" || job.customercompanyName === undefined || job.customercompanyName === null) ? `${job.customername} (Individual)` : job.customercompanyName}</td>
@@ -476,7 +476,7 @@ const handleView = (jobId:any) => {
                                     </td>
                                   </>
                                 )}
-                                {job.servicetype === 'RETURN JOB' && job.status==="Completed" && (
+                                {job.servicetype === 'RETURN JOB' && job.status.toLowerCase()==="completed" && (
                                   <>
                                     <td>{job.jobId || 'N/A'}</td>
                                     <td>{(job.customercompanyName === "" || job.customercompanyName === undefined || job.customercompanyName === null) ? `${job.customername} (Individual)` : job.customercompanyName}</td>
@@ -591,7 +591,7 @@ const handleView = (jobId:any) => {
                                     </td>
                                   </>
                                 )}
-              {job.servicetype === 'MULTI DROP OFF' &&  job.status==="Completed" &&(
+              {job.servicetype === 'MULTI DROP OFF' &&  job.status.toLowerCase()==="completed" &&(
                                   <>
                                     <td>{job.jobId || 'N/A'}</td>
                                     <td>{(job.customercompanyName === "" || job.customercompanyName === undefined || job.customercompanyName === null) ? `${job.customername} (Individual)` : job.customercompanyName}</td>
@@ -673,7 +673,7 @@ const handleView = (jobId:any) => {
                                 )}
               
                                 {/* Render rows for other service types */}
-                                {job.servicetype === 'STANDARD' && job.status==="Completed" && (
+                                {job.servicetype === 'STANDARD' && job.status.toLowerCase()==="completed" && (
                                   <>
                                     <td>{job.jobId || 'N/A'}</td>
                                     <td >{(job.customercompanyName === "" || job.customercompanyName === undefined || job.customercompanyName === null) ? `${job.customername} (Individual)` : job.customercompanyName}</td>
@@ -718,7 +718,7 @@ const handleView = (jobId:any) => {
                                   </>
                                 )}
 
-{job.servicetype === 'ONWARD VEHICLE' && job.status ==="Aborted" && (
+{job.servicetype === 'ONWARD VEHICLE' && job.status.toLowerCase() ==="aborted" && (
                                   <>
                                     <td style={{color:'red'}}>{job.jobId || 'N/A'}
                                     <div style={{fontSize:'8px'}}>ABORTED</div>
@@ -817,7 +817,7 @@ const handleView = (jobId:any) => {
                                     </td>
                                   </>
                                 )}
-                                {job.servicetype === 'RETURN JOB' && job.status==="Aborted" && (
+                                {job.servicetype === 'RETURN JOB' && job.status.toLowerCase()==="aborted" && (
                                   <>
                                     <td style={{color:'red'}}>{job.jobId || 'N/A'}
                                     <div style={{fontSize:'8px'}}>ABORTED</div>
@@ -925,7 +925,7 @@ const handleView = (jobId:any) => {
                                     </td>
                                   </>
                                 )}
-              {job.servicetype === 'MULTI DROP OFF' &&  job.status==="Aborted" &&(
+              {job.servicetype === 'MULTI DROP OFF' &&  job.status.toLowerCase()==="aborted" &&(
                                   <>
                                     <td style={{color:'red'}}>{job.jobId || 'N/A'}
                                     <div style={{fontSize:'8px'}}>ABORTED</div>
@@ -1008,7 +1008,7 @@ const handleView = (jobId:any) => {
                                 )}
               
                                 {/* Render rows for other service types */}
-                                {job.servicetype === 'STANDARD' && job.status==="Aborted" && (
+                                {job.servicetype === 'STANDARD' && job.status.toLowerCase()==="aborted" && (
                                   <>
                                     <td style={{color:'red'}}>{job.jobId || 'N/A'}
                                     <div style={{fontSize:'12px'}}>ABORTED</div>

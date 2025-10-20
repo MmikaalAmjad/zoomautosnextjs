@@ -224,7 +224,7 @@ const RecordFormPending = () => {
         setDeletionLoading(true);
       setdeletemessage(`Updating JobID ${jobId}`);
       
-        await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, formData, {
+        await axios.patch(`/api/subcontract/${jobId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
             "Content-Type": "application/json", // Ensure correct content type
@@ -232,7 +232,7 @@ const RecordFormPending = () => {
         });
   
         // Fetch updated records
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -267,7 +267,7 @@ const RecordFormPending = () => {
       const token = sessionStorage.getItem("authTokenDealer");
      
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

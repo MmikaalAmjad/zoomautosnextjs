@@ -56,7 +56,7 @@ const LogisticsHomepage = () => {
     const fetchRecords = async () => {
       const token = sessionStorage.getItem("authTokenDealer");
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -69,9 +69,9 @@ const LogisticsHomepage = () => {
             item.customercompanyName === dealerDetails.companyName
             && item.customerid===dealerDetails.Id
         );
-        const pendingJobs = filteredData.filter((job:any) => job.status === "pending").length;
-        const activeJobs = filteredData.filter((job:any) => job.status === "Active").length;
-        const completedJobs = filteredData.filter((job:any) => job.status === "Completed"||job.status === "Aborted").length;
+        const pendingJobs = filteredData.filter((job:any) => job.status.toLowerCase()=== "pending").length;
+        const activeJobs = filteredData.filter((job:any) => job.status.toLowerCase() === "active").length;
+        const completedJobs = filteredData.filter((job:any) => job.status.toLowerCase() === "completed"||job.status.toLowerCase() === "aborted").length;
   
         setRecords(filteredData);
         setFilteredRecords(filteredData); // Initially show all records
@@ -98,7 +98,7 @@ const LogisticsHomepage = () => {
     const fetchContact = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://zoomautos.co.uk/api/contact',
+        const response = await axios.get('/api/contact',
           {params: {
             _t: new Date().getTime(), // Add timestamp to bypass cache
           },

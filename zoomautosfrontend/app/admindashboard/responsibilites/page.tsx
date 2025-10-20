@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "https://zoomautos.co.uk/api/responsibilities"; // Backend API
+const API_URL = "/api/responsibilities"; // Backend API
 
 const ResponsibilitiesManagement = () => {
   const [responsibilities, setResponsibilities] = useState<any>([]);

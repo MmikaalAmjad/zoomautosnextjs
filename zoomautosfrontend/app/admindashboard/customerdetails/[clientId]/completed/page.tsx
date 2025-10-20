@@ -98,7 +98,7 @@ const [isEditModalOpen, setEditModalOpen] = useState(false);
       const token = sessionStorage.getItem("Transport Admin AuthToken");
      
       try {
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -106,7 +106,7 @@ const [isEditModalOpen, setEditModalOpen] = useState(false);
       });
 
         console.log(response.data.length);
-        const filteredData = response.data.filter((item:any) => item.status === "Completed"||item.status === "Aborted"
+        const filteredData = response.data.filter((item:any) => item.status.toLowerCase() === "completed"||item.status.toLowerCase() === "aborted"
           && item.customername === client.name && 
 (item.customerid ? item.customerid === client.Id : true) // If customerId is empty, fallback to customer name check
 );
@@ -320,7 +320,7 @@ const [deletionloading,setDeletionLoading]=useState(false);
   
 //       try {
 //           if (jobStatus === "Completed") {
-//               await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, { status: "Completed" }, {
+//               await axios.patch(`/api/subcontract/${selectedJobId}`, { status: "Completed" }, {
 //                 headers: {
 //                   Authorization: `Bearer ${token}`, // Add JWT token
 //                   "Content-Type": "application/json", // Ensure JSON format
@@ -333,7 +333,7 @@ const [deletionloading,setDeletionLoading]=useState(false);
   
 //               alert("✅ Job marked as Completed!");
 //           } else if (jobStatus === "Aborted") {
-//               await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, {
+//               await axios.patch(`/api/subcontract/${selectedJobId}`, {
 //                   status: "Aborted",
 //                   reason: value,
 //                   dateOfCall,

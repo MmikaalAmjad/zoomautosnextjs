@@ -1,7 +1,6 @@
 import React, { useState,  useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import './styles/majorforms.css';
 const Onwardvehicle = () => {
   const [formData, setFormData] = useState<Record<string, any>>({
     servicetype: 'ONWARD VEHICLE',
@@ -94,11 +93,13 @@ const Onwardvehicle = () => {
           throw new Error("Please enter a registration number.");
         }
     
-        const response = await fetch("https://zoomautos.co.uk/vehicle-enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ registrationNumber }),
-        });
+        const response = await fetch('/api/vehicleenquiry', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ registrationNumber }),
+});
     
         if (!response.ok) {
           if (response.status === 404) {
@@ -282,12 +283,13 @@ const Onwardvehicle = () => {
 
 
     try {
-      const response = await axios.post('https://zoomautos.co.uk/car', payload);
+     const response = await axios.post('/api/subcontract', payload);
+
       
-      const { message, data } = response.data;
-      
-const jobId2 = data;  // 'data' is the jobId in this case
-setJobId(jobId2);  // Set the jobId in state
+const { message, jobId } = response.data;
+
+setJobId(jobId);
+
 setLoading(false);
     setSuccess(true);
         
@@ -296,7 +298,7 @@ setLoading(false);
         const response2 = await axios.post("https://zoomautos.co.uk/api/Email/send-email", 
         {
         ...payload,
-        jobId:data,
+        jobId:jobId,
         } ,
         {
             headers: {
@@ -466,7 +468,7 @@ setLoading(false);
     </option>
     <option value="DRIVEN">DRIVEN</option>
 <option value="TRANSPORT">TRANSPORT</option>
-<option value="ANY" disabled>ANY</option>
+<option value="ANY" >ANY</option>
 
 </select>
 

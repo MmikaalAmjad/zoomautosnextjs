@@ -21,7 +21,7 @@ const CompletedJobDetails = () => {
       const token = sessionStorage.getItem("authTokenDealer");
      
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

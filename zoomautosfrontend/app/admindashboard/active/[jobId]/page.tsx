@@ -10,7 +10,7 @@ const RecordDetailsActive = () => {
   
   const router=useRouter();
   const ViewForm = () => {
-    router.push(`/admindashboard/active/${jobId}/Form`);
+    router.push(`/admindashboard/active/${jobId}/form`);
     
   };
   const [record, setRecord] = useState<any>();
@@ -20,8 +20,9 @@ const RecordDetailsActive = () => {
   useEffect(() => {
     const fetchRecordById = async () => {
       console.log('Fetching record for jobId:', jobId); // Log the jobId being used
+      const token = sessionStorage.getItem("Transport Admin AuthToken");
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

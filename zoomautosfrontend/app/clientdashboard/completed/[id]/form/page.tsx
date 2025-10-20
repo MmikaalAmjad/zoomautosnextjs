@@ -97,7 +97,7 @@ const CompletedForm = () => {
     const handleSubmit = async () => {
       try {
         
-        await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        await axios.patch(`/api/subcontract/${jobId}`, {
           ...formData,  // Spread existing form data
           status: 'Active',
           
@@ -105,7 +105,7 @@ const CompletedForm = () => {
         
   
         // Fetch updated records
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract");
+        const response = await axios.get("/api/subcontract");
         setRecord(response.data);
   
         alert("Job details updated successfully");
@@ -135,7 +135,7 @@ const CompletedForm = () => {
       const token = sessionStorage.getItem("authTokenDealer");
       
       try {
-        const response = await axios.get(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+        const response = await axios.get(`/api/subcontract/${jobId}`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },

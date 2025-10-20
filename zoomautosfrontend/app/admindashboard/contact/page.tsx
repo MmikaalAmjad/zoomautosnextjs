@@ -13,7 +13,7 @@ const LogisticsContactEditor = () => {
     const fetchContact = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://zoomautos.co.uk/api/LogisticsContact' 
+        const response = await axios.get('/api/contact' 
           ,{params: {
             _t: new Date().getTime(), // Add timestamp to bypass cache
           },
@@ -35,7 +35,7 @@ const LogisticsContactEditor = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.put('https://zoomautos.co.uk/api/LogisticsContact', { contactNo },
+      const response = await axios.put('/api/contact', { contactNo },
         {
             headers: {
                 Authorization: `Bearer ${token}`,

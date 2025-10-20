@@ -44,14 +44,14 @@ const token = sessionStorage.getItem("Transport Admin AuthToken");
       if (!client) return;
         const token = sessionStorage.getItem("Transport Admin AuthToken");
       
-        const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+        const response = await axios.get("/api/subcontract", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
         },
           params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
 
-const filteredData = response.data.filter((item:any) => item.status === "pending"&& item.customername === client.name && 
+const filteredData = response.data.filter((item:any) => item.status.toLowerCase() === "pending"&& item.customername === client.name && 
 (item.customerid ? item.customerid === client.Id : true) // If customerId is empty, fallback to customer name check
 );
 
@@ -245,14 +245,14 @@ setFilteredRecords(sortedData);
   //   }
 
   //   try {
-  //     await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${selectedJobId}`, {
+  //     await axios.patch(`/api/subcontract/${selectedJobId}`, {
   //       status: "Active",
   //       price: parseFloat(price),
   //     });
 
   //     // Re-fetch updated records
-  //     const response = await axios.get("https://zoomautos.co.uk/api/Subcontract");
-  //     const filteredData = response.data.filter((item) => item.status === "pending");
+  //     const response = await axios.get("/api/subcontract");
+  //     const filteredData = response.data.filter((item) => item.status.toLowerCase() === "pending");
   //     setRecords(filteredData);
 
   //     alert("Status updated to active with price: " + price);
@@ -274,14 +274,14 @@ setFilteredRecords(sortedData);
   //     }
   
   //     // Send the update request with price and status
-  //     await axios.patch(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+  //     await axios.patch(`/api/subcontract/${jobId}`, {
   //       status: "Active",
   //       price: parseFloat(price), // Convert to number
   //     });
   
   //     // Re-fetch the updated records from the server
-  //     const response = await axios.get("https://zoomautos.co.uk/api/Subcontract");
-  //     const filteredData = response.data.filter((item) => item.status === "pending");
+  //     const response = await axios.get("/api/subcontract");
+  //     const filteredData = response.data.filter((item) => item.status.toLowerCase() === "pending");
   //     setRecords(filteredData); // Update the records with the latest data
   
   //     alert("Status updated to active with price: " + price);
@@ -298,7 +298,7 @@ setFilteredRecords(sortedData);
         setDeletionLoading(true);
         setdeletemessage(`Deleting JobID ${jobId}`);
     try {
-      await axios.delete(`https://zoomautos.co.uk/api/Subcontract/${jobId}`, {
+      await axios.delete(`/api/subcontract/${jobId}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
       },

@@ -4,6 +4,14 @@ import axios from "axios";
 
 const PAGE_SIZE = 5;
 const SQUARE_SIZE = 300;
+interface LogoData {
+  Image: string[];
+}
+
+interface ImageSize {
+  width: number;
+  height: number;
+}
 
 const ImageUploader = () => {
   const [image, setImage] = useState<string | ArrayBuffer | null>(null);
@@ -13,7 +21,7 @@ const ImageUploader = () => {
   const [imageError, setImageError] = useState("");
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [logos, setLogos] = useState([]);
+  const [logos, setLogos] = useState<LogoData[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -23,22 +31,35 @@ const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const fetchLogos = async () => {
     try {
-      const response = await axios.get("https://zoomautos.co.uk/api/Logos");
-      setLogos(response.data.reverse()); // Show latest first
+      const res = await fetch("/api/logos?_t=" + new Date().getTime());
+
+if (!res.ok) {
+  const errorText = await res.text(); // read body only on error
+  throw new Error(errorText || "Failed to fetch logos");
+}
+
+const data: LogoData[] = await res.json(); // safe to parse JSON now
+setLogos(data);
+
     } catch (error) {
       console.error("Error fetching logos:", error);
     }
   };
 
-  const handleDelete = async (id:any) => {
-    if (!window.confirm("Are you sure you want to delete this logo?")) return;
-    try {
-      await axios.delete(`https://zoomautos.co.uk/api/Logos/${id}`);
-      fetchLogos(); // Refresh after deletion
-    } catch (error) {
-      console.error("Error deleting logo:", error);
+  const handleDelete = async (id: string) => {
+  if (!window.confirm("Are you sure you want to delete this logo?")) return;
+  try {
+    const res = await fetch(`/api/logos/${id}`, { method: "DELETE" });
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Failed to delete logo");
     }
-  };
+    fetchLogos(); // refresh logos
+  } catch (err) {
+    console.error("Error deleting logo:", err);
+  }
+};
+
 
 const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
   const file = event.target.files?.[0];
@@ -129,7 +150,7 @@ const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
       const imageUrl = await handleUpload();
       if (!imageUrl) throw new Error("Image upload failed.");
 
-      await axios.post("https://zoomautos.co.uk/api/Logos", {
+      await axios.post("/api/logos", {
         Image: [imageUrl],
         title: "Zoom Autos Logo"
       });

@@ -15,7 +15,7 @@ const AdminWhatWeDo = () => {
 
   const fetchContent = async () => {
     try {
-      const response = await axios.get("https://zoomautos.co.uk/api/whatwedo"
+      const response = await axios.get("/api/whatwedo"
        ,{ params: { _t: new Date().getTime() } // Add timestamp to bypass cache
       });
       setContent(response.data);
@@ -28,12 +28,12 @@ const AdminWhatWeDo = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`https://zoomautos.co.uk/api/whatwedo/${editingId}`, {
+        await axios.put(`/api/whatwedo/${editingId}`, {
           title,
           description,
         });
       } else {
-        await axios.post("https://zoomautos.co.uk/api/whatwedo", {
+        await axios.post("/api/whatwedo", {
           title,
           description,
         });
@@ -55,7 +55,7 @@ const AdminWhatWeDo = () => {
 
   const handleDelete = async (id:any) => {
     try {
-      await axios.delete(`https://zoomautos.co.uk/api/whatwedo/${id}`);
+      await axios.delete(`/api/whatwedo/${id}`);
       fetchContent();
     } catch (error) {
       console.error("Error deleting content:", error);

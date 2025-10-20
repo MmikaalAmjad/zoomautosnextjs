@@ -47,7 +47,7 @@ const CustomerDetailsWithJobs = () => {
           try {
             setLoading(true); // Set loading state before fetching data
             const [jobsResponse, clientsResponse] = await Promise.all([
-              axios.get("https://zoomautos.co.uk/api/Subcontract"
+              axios.get("/api/subcontract"
                 , {
                   headers: {
                     Authorization: `Bearer ${token}`, // Include token in headers
@@ -57,7 +57,7 @@ const CustomerDetailsWithJobs = () => {
                   },
                 }
               ),
-              axios.get("https://zoomautos.co.uk/api/Signup", {
+              axios.get("/api/login", {
                 headers: { Authorization: `Bearer ${token}` },
                 params: {
                   _t: new Date().getTime(), // Add timestamp to bypass cache
@@ -74,23 +74,23 @@ const CustomerDetailsWithJobs = () => {
             }
       
             const pendingJobs = jobsData.filter((job:any) => {
-              if (job.status !== "pending") return false;
+              if (job.status.toLowerCase() !== "pending") return false;
               return job.customerid ? job.customerid === client?.Id : (job.customername === client?.name && job.customeremail === client?.email);
             }).length;
       
             const activeJobs = jobsData.filter((job:any) => {
-              if (job.status !== "Active") return false;
+              if (job.status.toLowerCase() !== "active") return false;
               return job.customerid ? job.customerid === client?.Id : (job.customername === client?.name && job.customeremail === client?.email);
             }).length;
       
             const completedJobs = jobsData.filter((job:any) => {
-              if (job.status !== "Completed") return false;
+              if (job.status.toLowerCase() !== "completed") return false;
               return job.customerid ? job.customerid === client?.Id : (job.customername === client?.name && job.customeremail === client?.email);
             }).length;
             console.log(completedJobs)
       
             const pendingReviews = jobsData.filter((job:any) => 
-              job.status === "Completed" &&
+              job.status.toLowerCase() === "ompleted" &&
               (job.customerid ? job.customerid === client?.Id : job.customername === client?.name && job.customeremail === client?.email) &&
               job.Review === "No"
             ).length;

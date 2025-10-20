@@ -4,27 +4,36 @@ import SelfEmployedDriver from '@/components/becomedriver/role';
 
 export const metadata = {
   title: 'Join Zoom Autos - Become a Driver | UK Vehicle Recovery & Transport',
-  description: 'Register as a driver with Zoom Autos in the UK. Flexible hours, competitive pay, and nationwide vehicle recovery opportunities.',
+  description: 'Register as a professional driver with Zoom Autos in the UK. Enjoy flexible hours, competitive pay, nationwide vehicle recovery, and car transport opportunities with a trusted logistics company.',
   keywords: [
     'Zoom Autos',
     'driver registration',
     'vehicle recovery UK',
     'car transport jobs',
     'professional drivers UK',
-    'driving licence check',
-    'UK driver opportunities',
-    'work for Zoom Autos'
+    'UK driving jobs',
+    'work for Zoom Autos',
+    'UK vehicle transport careers',
+    'flexible driver jobs',
+    'car delivery driver UK',
+    'UK automotive transport jobs',
+    'vehicle relocation UK',
+    'transport driver vacancies',
+    'logistics driver UK',
+    'UK professional drivers',
+    'reliable driving jobs UK',
   ],
   openGraph: {
     title: 'Join Zoom Autos - Become a Driver',
-    description: 'Register as a driver with Zoom Autos. Work across the UK for vehicle recovery and transport.',
-    url: 'https://zoomautos.co.uk/join-driver',
+    description: 'Become a professional driver with Zoom Autos. Flexible hours, competitive pay, and nationwide vehicle recovery and transport work across the UK.',
+    url: 'https://zoomautos.co.uk/becomeadriver',
     siteName: 'Zoom Autos',
     images: [
       {
         url: '/Driver1.jpg',
         width: 800,
         height: 600,
+        alt: 'Join Zoom Autos as a professional driver',
       },
     ],
     locale: 'en_GB',
@@ -33,7 +42,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Join Zoom Autos - Become a Driver',
-    description: 'Register as a driver with Zoom Autos. Work across the UK for vehicle recovery and transport.',
+    description: 'Register as a driver with Zoom Autos. Flexible hours, competitive pay, and UK-wide vehicle recovery and transport opportunities.',
     images: ['/Driver1.jpg'],
   },
 };
@@ -46,7 +55,7 @@ const imagesW = [
 
 export default async function UserInformationPage({ searchParams }: any) {
   // Check for success query param after redirect
-  const success = searchParams?.success === 'true';
+  
 
   return (
     <>
@@ -59,11 +68,7 @@ export default async function UserInformationPage({ searchParams }: any) {
         <SelfEmployedDriver />
       </div>
 
-      {success && (
-        <div className='successStyle'>
-          Thanks for Joining us, we will Contact you Soon!
-        </div>
-      )}
+      
 
       <form
         action="/api/driverregistration"

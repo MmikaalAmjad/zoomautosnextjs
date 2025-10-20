@@ -4,31 +4,47 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Zoom Autos - Your Trusted logistics partner",
-    template: "%s | Zoom Autos", 
+    default: "Zoom Autos - Your Trusted Logistics partner",
+    template: "%s | Zoom Autos",
   },
   description:
-    "Find quality used cars at competitive prices. Zoom Autos offers nationwide delivery, part exchange, warranties, and finance options.",
+    "Zoom Autos provides professional car transport and logistics services across the UK. We offer fast nationwide delivery, secure vehicle handling, flexible transport options, and first-class customer service.",
   keywords: [
-    "used cars",
+    "car transport",
+    "vehicle delivery UK",
     "Zoom Autos",
-    "car dealership",
-    "UK used cars",
-    "nationwide delivery",
-    "low mileage cars",
+    "car shipping UK",
+    "UK vehicle logistics",
+    "fast car delivery",
+    "secure car transport",
+    "nationwide vehicle transport",
+    "reliable car transport services",
+    "professional vehicle movers",
+    "UK auto logistics",
+    "car transport company",
+    "vehicle shipping services",
+    "door-to-door car transport",
+    "low-cost vehicle delivery",
+    "trusted car transport UK",
+    "automotive logistics",
+    "Zoom Autos logistics",
+    "safe car shipping",
+    "UK vehicle transport solutions",
+    "car relocation services",
+    "fleet transport services",
   ],
   openGraph: {
-    title: "Zoom Autos | Quality Used Cars",
+    title: "Zoom Autos - Trusted Vehicle Transport & Logistics",
     description:
-      "Find quality used cars at competitive prices with Zoom Autos. Family-owned and trusted dealership.",
-    url: "https://www.zoomautos.co.uk", // your real domain here
+      "Professional UK car transport and logistics services. Nationwide delivery, secure vehicle handling, and first-class service.",
+    url: "https://www.zoomautos.co.uk",
     siteName: "Zoom Autos",
     images: [
       {
-        url: "https://your-cloudinary-image-url.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Zoom Autos - Quality Used Cars",
+        alt: "Zoom Autos - Car Transport & Logistics",
       },
     ],
     locale: "en_GB",
@@ -36,15 +52,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoom Autos | Quality Used Cars",
+    title: "Zoom Autos - Trusted Vehicle Transport & Logistics",
     description:
-      "Find quality used cars at competitive prices with Zoom Autos.",
-    images: ["https://your-cloudinary-image-url.jpg"],
+      "Professional UK car transport and logistics services. Fast nationwide delivery and secure vehicle handling.",
+    images: ["/og-image.jpg"],
   },
-  metadataBase: new URL("https://www.zoomautos.co.uk"),
 };
-
-
 
 const poppins = Poppins({
   subsets: ["latin"],

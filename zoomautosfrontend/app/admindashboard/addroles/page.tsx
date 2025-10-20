@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "https://zoomautos.co.uk/api/roles";
+const API_URL = "/api/roles";
 
 interface Role {
   _id: string;

@@ -41,16 +41,27 @@ if (!token) {
   return;
 }
 
-      const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: { _t: new Date().getTime() }, // Bypass cache
-      });
+      const response = await fetch("/api/subcontract?_t=" + Date.now(), {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
-      const filteredData = response.data.filter(
-        (item:any) => item.status === "Active" && item.viewbyadmin === false
-      );
+// Check if the request was successful
+if (!response.ok) {
+  throw new Error(`Error fetching subcontract jobs: ${response.status}`);
+}
+
+// Parse JSON data
+const jobsData = await response.json();
+
+// Filter the jobs
+const filteredData = jobsData.filter(
+  (item: any) => item.status.toLowerCase() === "active" && item.viewbyadmin === false
+);
+
+console.log(filteredData);
+
 
       const jobIdsList = filteredData.map((item:any) => item.jobId);
       setRecords(filteredData.length);
@@ -62,7 +73,7 @@ if (!token) {
           jobIdsList.map(async (jobId:Number) => {
             try {
               await axios.patch(
-                `https://zoomautos.co.uk/api/Subcontract/${jobId}`,
+                `/api/subcontract/${jobId}`,
                 { viewbyadmin: true }, // Data payload
                 {
                   headers: {
@@ -233,16 +244,16 @@ if (!token) {
               Driver
             </Link>
             </li>
-          {/* <li>
+          <li>
             
             <Link
-             href="/admindashboard/Feedback"
+             href="/admindashboard/reviews"
               onClick={closeSidebar}
-              className={isActiveLink("/admindashboard/Feedback") ? "active-link" : ""}
+              className={isActiveLink("/admindashboard/reviews") ? "active-link" : ""}
             >
-              Feedback
+              Reviews
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link
              href="/admindashboard/services"

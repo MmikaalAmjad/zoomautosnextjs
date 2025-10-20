@@ -2,14 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASfCwu8kA8hjZWtWMUSR0Sh4v_V8sGANw",
-  authDomain: "zoomautos-186eb.firebaseapp.com",
-  projectId: "zoomautos-186eb",
-  storageBucket: "zoomautos-186eb.appspot.com",
-  messagingSenderId: "299531883684",
-  appId: "1:299531883684:web:74e4634888e394148fc231",
-  measurementId: "G-C7XNTS7HWH",
-  databaseURL: "https://zoomautos-186eb-default-rtdb.europe-west1.firebasedatabase.app"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL
 };
 
 const app = initializeApp(firebaseConfig);

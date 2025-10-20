@@ -32,7 +32,19 @@ const CarImageComponent = () => {
     <div className="car-image-container">
       <div className="contentcarimage">
         
-        <h1 style={{fontSize:'2rem', color:'white'}}><strong>Move your car in 2 clicks</strong>  <LuMousePointerClick style={{ color: 'red' }} /></h1>
+        <h1
+  style={{
+    fontSize: '2rem',
+    color: 'white',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px', // space between text and icon
+  }}
+>
+  <strong>Move your car in 2 clicks</strong>
+  <LuMousePointerClick style={{ color: 'red', fontSize: '2.2rem' }} />
+</h1>
+
         <h1 className="heading" style={{color:'red'}}>Welcome To Zoom Autos</h1>
         <h2 style={{color:'white'}}>Your Trusted Logistics Partner</h2>
         <p className="description">Get your car delivered on your door step</p>

@@ -53,14 +53,14 @@ useEffect(() => {
   const fetchRecords = async () => {
     const token = sessionStorage.getItem("authTokenDealer");
     try {
-      const response = await axios.get("https://zoomautos.co.uk/api/Subcontract", {
+      const response = await axios.get("/api/subcontract", {
         headers: { Authorization: `Bearer ${token}` },
         params: { _t: new Date().getTime() },
       });
 
       const filteredData = response.data.filter(
         (item: any) =>
-          item.status === "pending" &&
+          item.status.toLowerCase() === "pending" &&
 
           item.customerid === dealerDetails.Id
       );
@@ -262,7 +262,7 @@ useEffect(() => {
       setDeletionLoading(true);
       setdeletemessage(`Deleting JobID ${jobId}`);
       
-      await axios.delete(`https://zoomautos.co.uk/api/Subcontract/${jobId}`,  {
+      await axios.delete(`/api/subcontract/${jobId}`,  {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
       },

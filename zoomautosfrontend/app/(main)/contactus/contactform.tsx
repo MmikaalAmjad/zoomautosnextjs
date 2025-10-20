@@ -21,7 +21,7 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("https://zoomautos.co.uk/car", {
+      const res = await axios.post("https://zoomautos.co.uk/subcontract", {
         formType: "Message",
         ...formdata,
       });
