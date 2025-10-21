@@ -32,31 +32,35 @@ type Data =
   | { message: string; Id?: string }
   | { message: string; error: string };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-await connectDB();
+
+export async function POST(req: NextRequest) {
+  await connectDB();
+
   try {
-if (req.method==="POST"){
-  
-
-  const { username, email, ...formData } = req.body;
-
+    const body = await req.json();
+    const { username, email, ...formData } = body;
 
     // Validate username and email
-    if (!username) return res.status(400).json({ message: "Username is required" });
-    if (!email) return res.status(400).json({ message: "Email is required" });
+    if (!username) {
+      return NextResponse.json({ message: "Username is required" }, { status: 400 });
+    }
+    if (!email) {
+      return NextResponse.json({ message: "Email is required" }, { status: 400 });
+    }
 
     // Check if username/email already exists
     const existingUser = await registration.findOne({ username }).lean();
     const existingEmail = await registration.findOne({ email }).lean();
 
-    if (existingUser && existingEmail)
-      return res.status(400).json({ message: "Email and Username already exist" });
-    if (existingUser) return res.status(400).json({ message: "Username already exists" });
-    if (existingEmail) return res.status(400).json({ message: "Email already exists" });
-
+    if (existingUser && existingEmail) {
+      return NextResponse.json({ message: "Email and Username already exist" }, { status: 400 });
+    }
+    if (existingUser) {
+      return NextResponse.json({ message: "Username already exists" }, { status: 400 });
+    }
+    if (existingEmail) {
+      return NextResponse.json({ message: "Email already exists" }, { status: 400 });
+    }
     console.time("Query Execution Time");
     // Get last user by Id
     const lastUser = await registration.findOne<Pick<IRegistration, "Id">>({}, { Id: 1 })
@@ -83,7 +87,7 @@ if (req.method==="POST"){
     console.timeEnd("Database Save Time");
 
     console.log(`✅ New User Created with Id: ${fnewId}`);
-    res.status(201).json({ message: "Signup successful!", Id: fnewId });
+    NextResponse.json({ message: "User registered successfully", Id: fnewId }, { status: 201 });
     console.log(`✅ New User Created with Id: ${fnewId}`);
         // Generate a unique file path for the PDF
         const pdfPath = `./Newaccount_${Date.now()}.pdf`;
@@ -439,17 +443,19 @@ const mailtransporter = nodemailer.createTransport({
     
     
     
-     }
+     
     } catch (err:any) {
         console.error("Error during registration:", err);
     
         // ✅ Only respond if nothing has been sent yet
-        if (!res.headersSent) {
-          return res.status(500).json({
-            message: "Something went wrong while registering.",
-            error: err.message,
-          });
-        }
+        return NextResponse.json(
+  {
+    message: "Something went wrong while registering.",
+    error: err instanceof Error ? err.message : "Unknown error",
+  },
+  { status: 500 }
+);
+
         // Otherwise do nothing — Express will log the error anyway
       }
     };

@@ -1,35 +1,27 @@
 import admin from 'firebase-admin';
 import path from 'path';
-import { promises as fs } from 'fs';
+import fs from 'fs';
 
-// Ensure Firebase Admin SDK initializes only once
+// Initialize Firebase Admin synchronously
 if (!admin.apps.length) {
-  const serviceAccountPath = path.resolve(process.cwd(), 'serviceAccount.json'); // ✅ filename example
+  try {
+    const serviceAccountPath = path.resolve(process.cwd(), 'app/lib/serviceaccount.json');
 
-  // Lazy load JSON securely
-  const loadServiceAccount = async () => {
-    try {
-      const data = await fs.readFile(serviceAccountPath, 'utf-8');
-      const credentials = JSON.parse(data);
+    const credentials = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf-8'));
 
-      admin.initializeApp({
-        credential: admin.credential.cert(credentials),
-        databaseURL: process.env.FIREBASE_DATABASE_URL, // ✅ use env variable for safety
-      });
+    admin.initializeApp({
+      credential: admin.credential.cert(credentials),
+      databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+    });
 
-      console.log('✅ Firebase Admin initialized');
-    } catch (err) {
-      console.error('❌ Failed to load Firebase service account:', err);
-    }
-  };
-
-  // Run the async init
-  loadServiceAccount();
+    console.log('✅ Firebase Admin initialized');
+  } catch (err) {
+    console.error('❌ Failed to load Firebase service account:', err);
+  }
 }
 
 const db = admin.database();
 
-/** Send job update to specific user */
 export const sendJobUpdateToUser = async (userId: string, jobData: any) => {
   try {
     await db.ref(`jobs/${userId}/${jobData.jobId}`).set(jobData);
@@ -39,7 +31,6 @@ export const sendJobUpdateToUser = async (userId: string, jobData: any) => {
   }
 };
 
-/** Send job update to all admins */
 export const sendJobUpdateToAdmins = async (jobData: any) => {
   try {
     await db.ref(`jobs/admins/${jobData.jobId}`).set(jobData);

@@ -1,8 +1,15 @@
 import axios from "axios";
 import ContactForm from "./contactform";
-const baseUrl = process.env.LOCAL_URL;
+import { GET as getContact } from "@/app/api/contact/route";
+import { GET as getEmail } from "@/app/api/logisticsemail/route";
+import { GET as getLocation } from "@/app/api/logisticslocation/route";
+import { GET as getTiming } from "@/app/api/timing/route";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || ""; // fallback for dev
+
 export const metadata = {
   title: "Contact Us | Zoom Autos - Vehicle Transport & Recovery UK",
+   metadataBase: new URL("https://zoomautos.co.uk"), 
   description:
     "Get in touch with Zoom Autos for vehicle transport, car recovery, or logistics inquiries. Find our UK contact number, email, office address, and working hours.",
   keywords: [
@@ -57,21 +64,17 @@ const convertToAMPM = (time: string) => {
 
 export default async function ContactPage() {
   // Fetch server-side so it's SEO-visible
-  const [emailRes, contactRes, locationRes, timeRes] = await Promise.all([
-  fetch(`${baseUrl}/api/logisticsemail`),
-  fetch(`${baseUrl}/api/contact`),
-  fetch(`${baseUrl}/api/logisticslocation`),
-  fetch(`${baseUrl}/api/timing`)
-]);
+const [emailRes, contactRes, locationRes, timeRes] = await Promise.all([
+    getEmail(),
+    getContact(),
+    getLocation(),
+    getTiming(),
+  ]);
 
-const [emailData, contactData, locationData, timeData] = await Promise.all([
-  emailRes.json(),
-  contactRes.json(),
-  locationRes.json(),
-  timeRes.json()
-]);
-
-console.log(emailData, contactData, locationData, timeData);
+  const emailData = await emailRes.json();
+  const contactData = await contactRes.json();
+  const locationData = await locationRes.json();
+  const timeData = await timeRes.json();
 
   
 

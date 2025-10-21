@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     default: "Zoom Autos - Your Trusted Logistics partner",
     template: "%s | Zoom Autos",
   },
+   metadataBase: new URL("https://zoomautos.co.uk"), 
   description:
     "Zoom Autos provides professional car transport and logistics services across the UK. We offer fast nationwide delivery, secure vehicle handling, flexible transport options, and first-class customer service.",
   keywords: [

@@ -4,6 +4,7 @@ import Carousel from "@/components/homepage/carousel/carousel";
 
 export const metadata = {
   title: "Zoom Autos - Get A Quote",
+   metadataBase: new URL("https://zoomautos.co.uk"), 
   description:
     "Get a free quote for fast and secure car transport services with Zoom Autos. Nationwide vehicle delivery across the UK.",
   keywords:

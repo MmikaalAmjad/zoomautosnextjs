@@ -5,26 +5,32 @@ import registration from "@/app/models/registration";
 export async function PATCH(req: NextRequest, context: any) {
   await connectDB();
 
-  const { id } = context.params; // dynamic param
+  const { token } = context.params; // dynamic route param
 
   try {
     const body = await req.json();
-    const { newPassword } = body;
+    const { password } = body;
 
-    if (!newPassword) {
+    if (!password) {
       return NextResponse.json(
-        { message: "New password is required" },
+        { message: "Password is required" },
         { status: 400 }
       );
     }
 
-    const user = await registration.findById(id);
+    // Find user by reset token
+    const user = await registration.findOne({ resetToken: token });
     if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json({ message: "Invalid token" }, { status: 400 });
     }
 
-    // Update password (without hashing for now)
-    user.password = newPassword;
+    // Update password (plain text)
+    user.password = password;
+
+    // Clear reset token
+    user.resetToken = undefined;
+    user.resetTokenExpiry = undefined;
+
     await user.save();
 
     return NextResponse.json({ message: "Password successfully reset." });

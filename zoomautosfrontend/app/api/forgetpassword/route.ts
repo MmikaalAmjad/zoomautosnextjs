@@ -1,40 +1,28 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
+import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/app/lib/db";
 import registration from "@/app/models/registration";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
 
-type Data =
-  | { message: string }
-  | { message: string; error: string };
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export async function POST(req: NextRequest) {
   await connectDB();
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
-  const { email } = req.body;
+  const body = await req.json();
+  const { email } = body;
 
   if (!email || typeof email !== "string") {
-    return res.status(400).json({ message: "Invalid email" });
+    return NextResponse.json({ message: "Invalid email" }, { status: 400 });
   }
 
-  try {
-    const user = await registration.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
+  const user = await registration.findOne({ email });
+  if (!user) {
+    return NextResponse.json({ message: "User not found" }, { status: 404 });
+  }
 
-    // Generate token (no expiry)
-    const token = crypto.randomBytes(32).toString("hex");
-    user.resetToken = token;
-    await user.save();
+  // Generate token (no expiry)
+  const token = crypto.randomBytes(32).toString("hex");
+  user.resetToken = token;
+  await user.save();
 
     // Create reset link
     const resetLink = `https://zoomautos.co.uk/reset-password/${token}`;
@@ -227,9 +215,6 @@ a {
 
     await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ message: "Password reset email sent." });
-  } catch (error: any) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error", error: error.message });
-  }
+    
+return NextResponse.json({ message: "Password reset email sent." }, { status: 200 });
 }

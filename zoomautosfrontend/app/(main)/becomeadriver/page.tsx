@@ -4,6 +4,7 @@ import SelfEmployedDriver from '@/components/becomedriver/role';
 
 export const metadata = {
   title: 'Join Zoom Autos - Become a Driver | UK Vehicle Recovery & Transport',
+   metadataBase: new URL("https://zoomautos.co.uk"), 
   description: 'Register as a professional driver with Zoom Autos in the UK. Enjoy flexible hours, competitive pay, nationwide vehicle recovery, and car transport opportunities with a trusted logistics company.',
   keywords: [
     'Zoom Autos',
